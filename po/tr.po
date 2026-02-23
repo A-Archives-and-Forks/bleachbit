@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bleachbit\n"
 "Report-Msgid-Bugs-To: andrew@bleachbit.org\n"
 "POT-Creation-Date: 2026-02-17 23:41-0700\n"
-"PO-Revision-Date: 2026-02-20 00:02+0000\n"
+"PO-Revision-Date: 2026-02-24 06:09+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/bleachbit/main/"
 "tr/>\n"
@@ -1280,7 +1280,7 @@ msgstr "Geri dönüşüm kutusunu boşalt"
 #. the uninstallers for software updates.
 #: ../bleachbit/Cleaner.py
 msgid "Update uninstallers"
-msgstr "Uygulama kaldırıcıları güncelle"
+msgstr "Güncelleme kaldırıcıları"
 
 #: ../bleachbit/Cleaner.py
 msgid ""
