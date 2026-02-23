@@ -6,11 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bleachbit\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: andrew@bleachbit.org\n"
 "POT-Creation-Date: 2026-02-17 23:41-0700\n"
-"PO-Revision-Date: 2026-02-08 19:09+0000\n"
-"Last-Translator: billy appetie "
-"<billy_appetie@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-02-24 06:09+0000\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/bleachbit/"
 "main/id/>\n"
 "Language: id\n"
@@ -18,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 "X-Launchpad-Export-Date: 2021-10-26 02:44+0000\n"
 
 #: ../cleaners/realplayer.xml ../cleaners/windows_media_player.xml
@@ -262,10 +261,8 @@ msgstr "Riwayat isian form"
 #: ../cleaners/librewolf.xml ../cleaners/waterfox.xml ../cleaners/zen.xml
 #: ../cleaners/palemoon.xml ../cleaners/firefox.xml
 #: ../cleaners/internet_explorer.xml
-#, fuzzy
-#| msgid "A history of forms entered in web sites and in the Search bar"
 msgid "A history of forms entered in websites and in the Search bar"
-msgstr "Riwayat formulir yang diisi di situs web dan pada bilah pencarian"
+msgstr "Riwayat formulir yang dimasukkan di situs web dan di bilah Pencarian"
 
 #: ../cleaners/librewolf.xml ../cleaners/waterfox.xml ../cleaners/epiphany.xml
 #: ../cleaners/zen.xml ../cleaners/chromium.xml ../cleaners/thunderbird.xml
@@ -303,7 +300,7 @@ msgstr "Pemulihan sesi"
 #: ../cleaners/librewolf.xml ../cleaners/waterfox.xml ../cleaners/zen.xml
 #: ../cleaners/thunderbird.xml ../cleaners/palemoon.xml ../cleaners/firefox.xml
 msgid "Restores the previous session when the browser next starts."
-msgstr ""
+msgstr "Memulihkan sesi sebelumnya saat peramban dimulai kembali."
 
 #: ../cleaners/librewolf.xml ../cleaners/waterfox.xml ../cleaners/zen.xml
 #: ../cleaners/chromium.xml ../cleaners/palemoon.xml ../cleaners/firefox.xml
@@ -474,16 +471,12 @@ msgid "Places"
 msgstr "Tempat-tempat"
 
 #: ../cleaners/epiphany.xml
-#, fuzzy
-#| msgid ""
-#| "A database of URLs including bookmarks, favicons, and a history of "
-#| "visited web sites"
 msgid ""
 "A database of URLs including bookmarks, favicons, and a history of visited "
 "websites"
 msgstr ""
-"Pangkalan data URL yang meliputi markah buku, favikon, dan riwayat situs "
-"yang telah dikunjungi"
+"Basis data URL termasuk bookmark, favicon, dan riwayat situs web yang "
+"dikunjungi"
 
 #: ../cleaners/epiphany.xml
 msgid "This option deletes all bookmarks."
@@ -555,10 +548,8 @@ msgstr "Hapus sesi saat ini"
 
 #: ../cleaners/chromium.xml ../cleaners/brave.xml ../cleaners/google_chrome.xml
 #: ../cleaners/microsoft_edge.xml ../cleaners/opera.xml
-#, fuzzy
-#| msgid "A history of forms entered in web sites"
 msgid "A history of forms entered in websites"
-msgstr "Riwayat form yang diisi pada situs web"
+msgstr "Riwayat formulir yang dimasukkan di situs web"
 
 #: ../cleaners/chromium.xml ../cleaners/slack.xml ../cleaners/brave.xml
 #: ../cleaners/google_chrome.xml ../cleaners/microsoft_edge.xml
@@ -604,10 +595,9 @@ msgstr "Penyinkronan"
 
 #: ../cleaners/chromium.xml ../cleaners/brave.xml ../cleaners/google_chrome.xml
 #: ../cleaners/microsoft_edge.xml
-#, fuzzy
-#| msgid "Delete the sync data and sign out of the browser"
 msgid "Delete the sync data (including web apps) and sign out of the browser"
-msgstr "Hapus data penyinkronan dan keluar dari peramban"
+msgstr ""
+"Hapus data sinkronisasi (termasuk aplikasi web) dan keluar dari peramban"
 
 #: ../cleaners/windows_explorer.xml ../cleaners/nautilus.xml ../cleaners/mc.xml
 msgid "File manager"
@@ -752,10 +742,8 @@ msgid "Blocklists"
 msgstr "Daftar blokiran"
 
 #: ../cleaners/transmission.xml
-#, fuzzy
-#| msgid "Blocklists will need update to work."
 msgid "Blocklists will need to be updated to work."
-msgstr "Daftar blokiran memerlukan pemutakhiran agar dapat befungsi."
+msgstr "Daftar blokir perlu diperbarui agar dapat berfungsi."
 
 #: ../cleaners/transmission.xml
 msgid "Torrents"
@@ -1169,10 +1157,8 @@ msgstr ""
 #. can have multiple values. They're a way to make CleanerML
 #. files more concise.
 #: ../bleachbit/Action.py
-#, fuzzy
-#| msgid "Deep scan does not support multi-value variable."
 msgid "Deep scan does not support multi-value variables."
-msgstr "Pemindaian secara mendalam tidak mendukung variabel multinilai."
+msgstr "Pemindaian mendalam tidak mendukung variabel multi-nilai."
 
 #. TRANSLATORS: This is a lint-style warning that there seems to be a
 #. mild mistake in the CleanerML file because walk.all is expected to
@@ -1515,10 +1501,8 @@ msgid "Wiping empty space can take a long time."
 msgstr "Membersihkan ruang kosong dapat memakan waktu yang lama."
 
 #: ../bleachbit/CLI.py
-#, fuzzy
-#| msgid "No work to do. Specify options."
 msgid "No operations selected. Specify cleaner options."
-msgstr "Tidak ada perintah yang dilakukan. Tentukan pilihan."
+msgstr "Tidak ada operasi yang dipilih. Tentukan opsi pembersih."
 
 #: ../bleachbit/CLI.py
 msgid "--overwrite is intended only for use with --clean"
@@ -1817,6 +1801,8 @@ msgid ""
 "Expert mode enables advanced features and relaxes guardrails. Use extra "
 "caution in expert mode."
 msgstr ""
+"Mode ahli mengaktifkan fitur lanjutan dan melonggarkan pembatasan. Gunakan "
+"mode ahli dengan sangat hati-hati."
 
 #: ../bleachbit/GuiPreferences.py ../share/app-menu.ui
 msgid "Preferences"
@@ -1839,14 +1825,13 @@ msgid "Keep list"
 msgstr "Pertahankan daftar"
 
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy
-#| msgid "Dark mode"
 msgid "Expert mode"
-msgstr "Mode gelap"
+msgstr "Mode ahli"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Some GTK themes do not support both light and dark modes."
 msgstr ""
+"Beberapa tema GTK tidak mendukung mode terang dan gelap secara bersamaan."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Warning confirmations reset."
@@ -1983,7 +1968,7 @@ msgstr "Jalur ini sudah ada dalam daftar kustom."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "This path is protected. To bypass protection, enable expert mode."
-msgstr ""
+msgstr "Jalur ini dilindungi. Untuk melewati perlindungan, aktifkan mode ahli."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Protected Path"
@@ -2059,7 +2044,7 @@ msgstr "Ukuran"
 
 #: ../bleachbit/GuiTreeModels.py
 msgid "This option is protected. To bypass protection, enable expert mode."
-msgstr ""
+msgstr "Opsi ini dilindungi. Untuk melewati perlindungan, aktifkan mode ahli."
 
 #. TRANSLATORS: %(cleaner) may be Firefox, System, etc.
 #. %(option) may be cache, logs, cookies, etc.
@@ -2078,6 +2063,8 @@ msgstr "Mengatur ulang berkas konfigurasi karena rusak: %s"
 msgid ""
 "%(cleaner)s - %(option)s cannot be cleaned because expert mode is disabled."
 msgstr ""
+"%(cleaner)s - %(option)s tidak dapat dibersihkan karena mode ahli "
+"dinonaktifkan."
 
 #: ../bleachbit/GuiWindow.py
 msgid "You must select an operation"
@@ -2136,7 +2123,7 @@ msgstr ""
 
 #: ../bleachbit/GuiWindow.py
 msgid "This option requires expert mode. Enable it in Preferences."
-msgstr ""
+msgstr "Opsi ini memerlukan mode ahli. Aktifkan di Preferensi."
 
 #. TRANSLATORS: this is the context menu
 #. TRANSLATORS: This is the preview button on the main window.  It
@@ -2152,10 +2139,8 @@ msgstr "Kelola Kuki"
 
 #. TRANSLATORS: this is the context menu
 #: ../bleachbit/GuiWindow.py
-#, fuzzy
-#| msgid "Manage cookies to keep"
 msgid "Manage custom paths"
-msgstr "Kelola kuki untuk disimpan"
+msgstr "Kelola jalur khusus"
 
 #: ../bleachbit/GuiWindow.py
 msgid "Preview files in the selected operations (without deleting any files)"
@@ -2487,10 +2472,8 @@ msgid "{bytes:,} bytes and {inodes:,} inodes available to super-user"
 msgstr "{bytes:,} byte dan {inodes:,} inode yang tersedia untuk pengguna super"
 
 #: ../bleachbit/Wipe.py
-#, fuzzy
-#| msgid "Handled unknown error #0 while truncating file."
 msgid "Encountered unknown error #0 while truncating file."
-msgstr "Menangani galat yang tak diketahui #0 saat memotong berkas."
+msgstr "Terjadi kesalahan tidak dikenal #0 saat memotong file."
 
 #. TRANSLATORS: This indicates an error.  The special keyword
 #. %(operation)s will be replaced by 'firefox' or 'opera' or
