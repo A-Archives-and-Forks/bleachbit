@@ -807,12 +807,12 @@ class GUI(Gtk.ApplicationWindow):
         # make a menu
         menu = Gtk.Menu()
         menu.connect('hide', lambda widget: widget.detach())
-        # TRANSLATORS: this is the context menu
+        # TRANSLATORS: Label in a context menu. 'Preview' is a verb.
         preview_item = Gtk.MenuItem(label=_("Preview"))
         preview_item.connect('activate', self.cb_run_option,
                              False, cleaner_id, option_id)
         menu.append(preview_item)
-        # TRANSLATORS: this is the context menu
+        # TRANSLATORS: Label in a context menu. 'Clean' is a verb.
         clean_item = Gtk.MenuItem(label=_("Clean"))
         clean_item.connect('activate', self.cb_run_option,
                            True, cleaner_id, option_id)
@@ -821,7 +821,7 @@ class GUI(Gtk.ApplicationWindow):
         # Check if this option has a cookie command
         if self._option_has_cookie_command(cleaner_id, option_id):
             menu.append(Gtk.SeparatorMenuItem())
-            # TRANSLATORS: this is the context menu
+            # TRANSLATORS: Label in a context menu.
             cookie_item = Gtk.MenuItem(label=_("Manage Cookies"))
             cookie_item.connect('activate', self.cb_manage_cookies)
             menu.append(cookie_item)
@@ -912,14 +912,15 @@ class GUI(Gtk.ApplicationWindow):
         self.preview_button.set_label(_('Preview'))
 
         # Clean button
-        # TRANSLATORS: This is the clean button on the main window.
-        # It makes permanent changes: usually deleting files, sometimes
-        # altering them.
+        # TRANSLATORS: Label for the clean button on header bar of the
+        # the main window. 'Clean' is a verb.
         self.run_button.set_label(_('Clean'))
         self.run_button.set_tooltip_text(
             _("Clean files in the selected operations"))
 
         # Stop button
+        # TRANSLATORS: Label for the stop button on header bar of the
+        # the main window. 'Abort' is a verb.
         self.stop_button.set_label(_('Abort'))
         self.stop_button.set_tooltip_text(
             _('Abort the preview or cleaning process'))

@@ -134,6 +134,8 @@ class ChaffDialog(Gtk.Dialog):
         box.add(self.progressbar)
         self.progressbar.hide()
 
+        # TRANSLATORS: Button label in a dialog window to start making
+        # chaff files.
         self.make_button = Gtk.Button(label=_("Make files"))
         self.make_button.connect('clicked', self.on_make_files)
         box.add(self.make_button)
@@ -175,8 +177,10 @@ class ChaffDialog(Gtk.Dialog):
 
     def download_models_dialog(self):
         """Download models"""
+        # TRANSLATORS: The question shows in a dialog.
+        msg = _("Download data needed for chaff generator?")
         dialog = Gtk.MessageDialog(parent=self, flags=0, message_type=Gtk.MessageType.QUESTION,
-                                   buttons=Gtk.ButtonsType.OK_CANCEL, text=_("Download data needed for chaff generator?"))
+                                   buttons=Gtk.ButtonsType.OK_CANCEL, text=msg)
         response = dialog.run()
         ret = None
         if response == Gtk.ResponseType.OK:
@@ -194,6 +198,8 @@ class ChaffDialog(Gtk.Dialog):
         delete_when_finished = self.when_finished_combo.get_active() == 0
         inspiration = self.inspiration_combo.get_active()
         if not output_dir:
+            # TRANSLATORS: This is an error message shown in an infobar
+            # when the user has not selected a destination folder.
             self.show_infobar(_("Select destination folder"),
                               Gtk.MessageType.ERROR)
             return

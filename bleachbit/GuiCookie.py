@@ -44,6 +44,7 @@ class CookieManagerDialog(Gtk.Window):
     """Manage cookies to keep"""
 
     def __init__(self):
+        # TRANSLATORS: Title of the dialog to manage cookies to keep
         Gtk.Window.__init__(self, title=_("Manage cookies to keep"))
         self.set_default_size(600, 500)
         self.set_border_width(10)
@@ -56,6 +57,7 @@ class CookieManagerDialog(Gtk.Window):
         # Instructions label
         instructions = Gtk.Label()
         instructions.set_markup(
+            # TRANSLATORS: Instruction label in the manage cookies dialog.
             "<b>" + _("Select the cookies to keep when cleaning cookies across browsers.") + "</b>")
         instructions.set_line_wrap(True)
         instructions.set_xalign(0)  # Left align
@@ -65,16 +67,20 @@ class CookieManagerDialog(Gtk.Window):
         search_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
         vbox.pack_start(search_box, False, False, 0)
 
+        # TRANSLATORS: Label for the search entry in the manage cookies dialog.
         search_label = Gtk.Label(label=_("Search:"))
         search_box.pack_start(search_label, False, False, 0)
 
         self.search_entry = Gtk.Entry()
+        # TRANSLATORS: Placeholder text in the search entry in the manage cookies dialog.
         self.search_entry.set_placeholder_text(_("Filter cookies..."))
         self.search_entry.connect("changed", self.on_search_changed)
         search_box.pack_start(self.search_entry, True, True, 0)
 
+        # TRANSLATORS: Toggle button label in the manage cookies dialog.
         self.selected_toggle = Gtk.ToggleButton(label=_("Show Selected"))
         self.selected_toggle.set_tooltip_text(
+            # TRANSLATORS: Tooltip for the "Show Selected" toggle button.
             _("Only show cookies that are currently selected"))
         self.selected_toggle.connect("toggled", self.on_selected_toggle)
         search_box.pack_start(self.selected_toggle, False, False, 0)
@@ -108,6 +114,7 @@ class CookieManagerDialog(Gtk.Window):
         self.treeview.append_column(column_toggle)
 
         renderer_text = Gtk.CellRendererText()
+        # TRANSLATORS: Column header in the manage cookies dialog.
         column_domain = Gtk.TreeViewColumn(_("Host"), renderer_text, text=1)
         column_domain.set_sort_column_id(1)
         column_domain.set_resizable(True)
@@ -128,19 +135,25 @@ class CookieManagerDialog(Gtk.Window):
         button_box.pack_start(self.stat_label, True, True, 0)
 
         # Select all / Deselect all buttons
+        # TRANSLATORS: Button label in the manage cookies dialog.
         self.select_all_btn = Gtk.Button.new_with_label(_("Select All"))
         self.select_all_btn.connect("clicked", self.on_select_all_clicked)
         button_box.pack_start(self.select_all_btn, False, False, 0)
 
+        # TRANSLATORS: Button label in the manage cookies dialog.
+        # The underscore indicates the accelerator key.
         self.deselect_all_btn = Gtk.Button.new_with_label(_("Deselect All"))
         self.deselect_all_btn.connect("clicked", self.on_deselect_all_clicked)
         button_box.pack_start(self.deselect_all_btn, False, False, 0)
 
         # Action buttons
+        # TRANSLATORS: Button label in the manage cookies dialog.
+        # The underscore indicates the accelerator key.
         self.cancel_btn = Gtk.Button.new_with_mnemonic(_("_Cancel"))
         self.cancel_btn.connect("clicked", self.on_cancel_clicked)
         button_box.pack_start(self.cancel_btn, False, False, 0)
 
+        # TRANSLATORS: Button label in the manage cookies dialog.
         self.keep_btn = Gtk.Button.new_with_label(_("Keep Selected"))
         self.keep_btn.get_style_context().add_class("suggested-action")
         self.keep_btn.connect("clicked", self.on_keep_clicked)
