@@ -6,19 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bleachbit\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: andrew@bleachbit.org\n"
 "POT-Creation-Date: 2026-02-17 23:41-0700\n"
-"PO-Revision-Date: 2025-09-11 04:02+0000\n"
+"PO-Revision-Date: 2026-02-24 06:09+0000\n"
 "Last-Translator: Ziad El-sayed <ziadelsayed1797@tutamail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/bleachbit/main/ar/"
-">\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/bleachbit/main/"
+"ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 "X-Launchpad-Export-Date: 2021-07-18 20:36+0000\n"
 
 #: ../cleaners/realplayer.xml ../cleaners/windows_media_player.xml
@@ -889,11 +889,9 @@ msgid "Administrator credentials required."
 msgstr ""
 
 #: windows/NsisInclude/NsisMultiUserLang.nsh
-#, fuzzy
-#| msgid "Administrator privileges are required to clean Windows Updates"
 msgctxt "nsis:MULTIUSER_ADMIN_UNINSTALL_CREDENTIALS_REQUIRED"
 msgid "Administrator credentials required to uninstall."
-msgstr "يلزم الحصول علي صلاحيات المسؤول لتنظيف تحديثات ويندوز"
+msgstr "يلزم وجود صلاحيات المسؤول لإلغاء التثبيت."
 
 #. TRANSLATORS: The character '&' positions the keyboard accelerator key.
 #. TRANSLATORS: For example, '&anyone' sets 'a' as the accelerator key (Alt+a).
@@ -1041,11 +1039,9 @@ msgid "Core files (required)"
 msgstr "اختر ملفات لمحوها"
 
 #: windows/NsisInclude/NsisMultiUserLang.nsh
-#, fuzzy
-#| msgid "Widgets for the desktop"
 msgctxt "nsis:SECTION_DESKTOP_DESCRIPTION"
 msgid "Create a shortcut on the desktop."
-msgstr "برامج رسومية على سطح المكتب تعمل مباشرة"
+msgstr "قم بإنشاء اختصار على سطح المكتب."
 
 #: windows/NsisInclude/NsisMultiUserLang.nsh
 #, fuzzy
@@ -1376,10 +1372,9 @@ msgid "Importing cleaners from Winapp2.ini."
 msgstr "استيراد المنظفات من Winapp2.ini."
 
 #: ../bleachbit/Cleaner.py
-#, fuzzy, python-format
-#| msgid "_Wipe Free Space"
+#, python-format
 msgid "Wipe empty space %s"
-msgstr "امح المساحة الشا_غرة"
+msgstr "مسح المساحة الفارغة %s"
 
 #: ../bleachbit/CLI.py
 #, python-format
@@ -2007,11 +2002,9 @@ msgstr "تم رفض الوصول: %s"
 
 #. TRANSLATORS: %s is a file or folder path that was just removed
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy, python-format
-#| msgctxt "button"
-#| msgid "Remove"
+#, python-format
 msgid "Removed: %s"
-msgstr "أزِل"
+msgstr "تمت إزالة: %s"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Manage cookies to keep..."
