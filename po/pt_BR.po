@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: bleachbit\n"
 "Report-Msgid-Bugs-To: andrew@bleachbit.org\n"
 "POT-Creation-Date: 2026-02-17 23:41-0700\n"
-"PO-Revision-Date: 2026-02-21 22:09+0000\n"
-"Last-Translator: Cirnos <cirnos@tuta.io>\n"
+"PO-Revision-Date: 2026-02-24 06:09+0000\n"
+"Last-Translator: Tiago Matos <tiago@tmatos.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "bleachbit/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -303,7 +303,7 @@ msgstr "Restauração da sessão"
 #: ../cleaners/librewolf.xml ../cleaners/waterfox.xml ../cleaners/zen.xml
 #: ../cleaners/thunderbird.xml ../cleaners/palemoon.xml ../cleaners/firefox.xml
 msgid "Restores the previous session when the browser next starts."
-msgstr ""
+msgstr "Restaura a sessão anterior na próxima vez que o navegador iniciar."
 
 #: ../cleaners/librewolf.xml ../cleaners/waterfox.xml ../cleaners/zen.xml
 #: ../cleaners/chromium.xml ../cleaners/palemoon.xml ../cleaners/firefox.xml
@@ -1868,7 +1868,7 @@ msgstr "Modo especialista"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Some GTK themes do not support both light and dark modes."
-msgstr ""
+msgstr "Algums temas do GTK não suportam ambos os modos claros e escuros."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Warning confirmations reset."
@@ -2005,6 +2005,8 @@ msgstr "Este caminho já existe na lista customizada."
 #: ../bleachbit/GuiPreferences.py
 msgid "This path is protected. To bypass protection, enable expert mode."
 msgstr ""
+"Este caminho está protegido. Para transpassar tal proteção, habilite o modo "
+"especialista."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Protected Path"
@@ -2081,6 +2083,8 @@ msgstr "Tamanho"
 #: ../bleachbit/GuiTreeModels.py
 msgid "This option is protected. To bypass protection, enable expert mode."
 msgstr ""
+"Esta opção está protegida. Para transpassar tal proteção, habilite o modo "
+"especialista."
 
 #. TRANSLATORS: %(cleaner) may be Firefox, System, etc.
 #. %(option) may be cache, logs, cookies, etc.
@@ -2099,6 +2103,8 @@ msgstr "Redefinindo o arquivo de configuração porque está corrompido: %s"
 msgid ""
 "%(cleaner)s - %(option)s cannot be cleaned because expert mode is disabled."
 msgstr ""
+"%(cleaner)s - %(option)s não pode ser limpo pois o modo especialista está "
+"desabilitado."
 
 #: ../bleachbit/GuiWindow.py
 msgid "You must select an operation"
@@ -2158,8 +2164,9 @@ msgstr ""
 "genuína em https://www.bleachbit.org onde é sempre gratuita."
 
 #: ../bleachbit/GuiWindow.py
+#, fuzzy
 msgid "This option requires expert mode. Enable it in Preferences."
-msgstr ""
+msgstr "Esta opção requer o modo especialista. Habilite-o nas Preferências."
 
 #. TRANSLATORS: this is the context menu
 #. TRANSLATORS: This is the preview button on the main window.  It
@@ -2175,10 +2182,8 @@ msgstr "Gerenciar cookies"
 
 #. TRANSLATORS: this is the context menu
 #: ../bleachbit/GuiWindow.py
-#, fuzzy
-#| msgid "Manage cookies to keep"
 msgid "Manage custom paths"
-msgstr "Gerenciar cookies para manter"
+msgstr "Gerenciar caminhos customizados"
 
 #: ../bleachbit/GuiWindow.py
 msgid "Preview files in the selected operations (without deleting any files)"
