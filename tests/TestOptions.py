@@ -87,21 +87,22 @@ class OptionsTestCase(common.BleachbitTestCase):
         # clean up
         del o
 
-    def test_whitelist(self):
+    def test_keep_list(self):
         """Test for get_whitelist_paths() / set_whitelist_paths()"""
         o = bleachbit.Options.options
+        # FIXME: finish renaming whitelist to keep list
         self.assertIsInstance(o.get_whitelist_paths(), list)
-        whitelist = [('file', '/home/foo'), ('folder', '/home'),
+        keep_list = [('file', '/home/foo'), ('folder', '/home'),
                      ('file', '/home/unicode/кодирование')]
-        old_whitelist = o.get_whitelist_paths()
+        old_keep_list = o.get_whitelist_paths()
         o.config.remove_section('whitelist/paths')
         self.assertIsInstance(o.get_whitelist_paths(), list)
         self.assertEqual(o.get_whitelist_paths(), [])
-        o.set_whitelist_paths(whitelist)
+        o.set_whitelist_paths(keep_list)
         self.assertIsInstance(o.get_whitelist_paths(), list)
-        self.assertEqual(set(whitelist), set(o.get_whitelist_paths()))
-        o.set_whitelist_paths(old_whitelist)
-        self.assertEqual(set(old_whitelist), set(o.get_whitelist_paths()))
+        self.assertEqual(set(keep_list), set(o.get_whitelist_paths()))
+        o.set_whitelist_paths(old_keep_list)
+        self.assertEqual(set(old_keep_list), set(o.get_whitelist_paths()))
 
     def test_init_configuration(self):
         """Test for init_configuration()"""

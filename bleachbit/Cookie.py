@@ -140,7 +140,7 @@ def list_cookies(path):
 
 
 def delete_cookies(path, keep_list, really_delete=False):
-    """Process cookies with optional deletion based on allowlist
+    """Process cookies with optional deletion based on keep list
 
     Args:
         path (str): Path to the cookies database file

@@ -269,7 +269,7 @@ class Options:
         return values
 
     def get_whitelist_paths(self):
-        """Return the whitelist of paths"""
+        """Return the keep list (formerly whitelist) of paths"""
         return self.get_paths("whitelist/paths")
 
     def get_custom_paths(self):
@@ -399,7 +399,7 @@ class Options:
         self.__flush()
 
     def set_whitelist_paths(self, values):
-        """Save the whitelist"""
+        """Save the keep list (formerly whitelist)"""
         section = "whitelist/paths"
         if self.config.has_section(section):
             self.config.remove_section(section)

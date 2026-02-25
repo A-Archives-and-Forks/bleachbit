@@ -549,17 +549,17 @@ def rotated_logs():
     https://bugs.launchpad.net/bleachbit/+bug/367575
     https://github.com/bleachbit/bleachbit/issues/1744
     """
-    whitelists = [re.compile(r'/var/log/(removed_)?(packages|scripts)'),
+    keep_lists = [re.compile(r'/var/log/(removed_)?(packages|scripts)'),
                   re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')]
     positive_re = re.compile(r'(\.(\d+|bz2|gz|xz|old)|\-\d{8}?)')
 
     for path in bleachbit.FileUtilities.children_in_directory('/var/log'):
-        whitelist_match = False
-        for whitelist in whitelists:
-            if whitelist.search(path) or bleachbit.FileUtilities.whitelisted(path):
-                whitelist_match = True
+        keep_list_match = False
+        for keep_list in keep_lists:
+            if keep_list.search(path) or bleachbit.FileUtilities.whitelisted(path):
+                keep_list_match = True
                 break
-        if whitelist_match:
+        if keep_list_match:
             continue
         if positive_re.search(path):
             yield path

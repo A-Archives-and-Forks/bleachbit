@@ -600,7 +600,7 @@ class System(Cleaner):
                 yield wu
 
     def init_whitelist(self):
-        """Initialize the whitelist only once for performance"""
+        """Initialize the keep list (formerly whitelist) only once for performance"""
         regexes = [
             '^/tmp/.X0-lock$',
             '^/tmp/.truecrypt_aux_mnt.*/(control|volume)$',
@@ -653,7 +653,7 @@ class System(Cleaner):
             self.regexes_compiled.append(re.compile(regex))
 
     def whitelisted(self, pathname):
-        """Return boolean whether file is whitelisted"""
+        """Return boolean whether file is keep listed (formerly whitelisted)"""
         if os.name == 'nt':
             # Whitelist is specific to POSIX
             return False

@@ -44,11 +44,11 @@ logger = logging.getLogger(__name__)
 
 
 
-def whitelist(path):
-    """Return information that this file was whitelisted"""
+def ret_keep_list(path):
+    """Return information that this file matched by keep list"""
     ret = {
         # TRANSLATORS: This is the label in the log indicating a path
-        # was skipped because it matches the whitelist
+        # was skipped because it matches the keep list
         'label': _('Skip'),
         'n_deleted': 0,
         'n_special': 0,
@@ -74,7 +74,7 @@ class Delete:
     def execute(self, really_delete):
         """Make changes and return results"""
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
         try:
             size = FileUtilities.getsize(self.path)
@@ -160,7 +160,7 @@ class Function:
         """Execute the function and return results"""
 
         if self.path is not None and FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
@@ -247,7 +247,7 @@ class Ini:
         from bleachbit.Action import CLEAN_FILE_LABEL
 
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
@@ -285,7 +285,7 @@ class Json:
         from bleachbit.Action import CLEAN_FILE_LABEL
 
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
@@ -326,7 +326,7 @@ class Truncate(Delete):
         """Make changes and return results"""
 
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
