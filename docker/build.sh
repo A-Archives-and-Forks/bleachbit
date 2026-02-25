@@ -104,6 +104,7 @@ docker build \
     --build-arg HOME_IN_CONTAINER="$HOME_IN_CONTAINER" \
     --build-arg USER_ID="$USER_ID" \
     --build-arg GROUP_ID="$GROUP_ID" \
+    --progress=plain \
     -f "$DOCKERFILE" \
     -t "$IMAGE" \
     "$DOCKER_BUILD_CONTEXT"
