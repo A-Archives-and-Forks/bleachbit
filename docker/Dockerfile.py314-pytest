@@ -31,14 +31,15 @@ RUN apt-get update \
 RUN sed -i 's/# \(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
     && locale-gen
 
-RUN python -m pip install --no-cache-dir -U pip setuptools wheel
+# Update pip.
+# pip is the only preinstalled package.
+RUN python -m pip list && python -m pip install --no-cache-dir -U pip
+
+# Install new Python packages.
+COPY requirements.txt ./
 RUN python -m pip install --no-cache-dir \
-        chardet \
-        psutil \
-        requests \
-        pycairo \
-        PyGObject \
-        pytest
+        PyGObject pytest pytest-xdist \
+        -r requirements.txt
 
 ARG HOME_IN_CONTAINER=/home/user
 ARG USER_ID=1000

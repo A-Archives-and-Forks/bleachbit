@@ -71,12 +71,17 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Update pip
-      run: python -m pip install --upgrade pip
+    - name: Update Python packages
+      run: |
+        pip list
+        python -m pip install --upgrade pip
 
     - name: Install Python dependencies
       run: |
-        pip install chardet "PyGObject${{ matrix.pygobject-version }}" requests setuptools coverage coveralls appveyor-artifacts psutil
+        pip install coverage coveralls appveyor-artifacts -r requirements.txt
+        if [ "${{ matrix.pygobject-version }}" != "" ]; then
+          pip install "PyGObject${{ matrix.pygobject-version }}"
+        fi
         if [ "${{ matrix.python-version }}" == "3.14" ]; then
           pip install pytest pytest-xdist
         fi
