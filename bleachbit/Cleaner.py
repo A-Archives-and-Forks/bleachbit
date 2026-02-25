@@ -744,7 +744,7 @@ def create_wipe_empty_space_cleaner(path):
     display = _("Wipe empty space %s") % path
 
     def wipe_path_func():
-        yield from bleachbit.Wipe.wipe_path(path, idle=True)
+        yield from wipe_path(path, idle=True)
         yield 0
 
     class CustomWipeAction(Action.ActionProvider):
