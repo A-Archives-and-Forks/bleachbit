@@ -81,7 +81,8 @@ case "$DISTRO_NAME" in
             echo "SKIP_TESTS is set, so skipping pytest." >&2
             exit 0
         fi
-        xvfb-run -a python -m pytest -q \
+        # Run GUI tests with pytest.
+        xvfb-run -a python -m pytest --numprocesses auto \
             tests/TestGUI.py \
             tests/TestGuiChaff.py
         ;;
