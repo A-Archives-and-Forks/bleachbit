@@ -38,7 +38,7 @@ These are the terms:
 """
 
 import bleachbit
-from bleachbit import Command, FileUtilities, General
+from bleachbit import FileUtilities
 from bleachbit.Language import get_text as _
 
 import ctypes
@@ -246,6 +246,9 @@ def delete_updates():
 
     Yields commands
     """
+    # Import here to avoid a circular import.
+    # pylint: disable=import-outside-toplevel
+    from bleachbit import Command
     if not shell.IsUserAnAdmin():
         logger.warning(
             _("Administrator privileges are required to clean Windows Updates"))
