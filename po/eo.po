@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bleachbit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 23:41-0700\n"
+"POT-Creation-Date: 2026-02-23 09:52-0700\n"
 "PO-Revision-Date: 2024-03-24 14:02+0000\n"
 "Last-Translator: programutox <programutox@disroot.org>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/bleachbit/main/"
@@ -126,6 +126,7 @@ msgstr "Plurmedia spektilo"
 msgid "Cache"
 msgstr "Kaŝmemoro"
 
+#. TRANSLATORS: The description of what certain cleaning options do.
 #: ../cleaners/xine.xml ../cleaners/dnf.xml ../cleaners/miro.xml
 #: ../cleaners/amsn.xml ../cleaners/librewolf.xml ../cleaners/rhythmbox.xml
 #: ../cleaners/beagle.xml ../cleaners/yum.xml
@@ -368,6 +369,7 @@ msgid ""
 "played"
 msgstr ""
 
+#. TRANSLATORS: The description of a cleaner.
 #: ../cleaners/microsoft_office.xml ../cleaners/libreoffice.xml
 #: ../bleachbit/Cleaner.py
 msgid "Office suite"
@@ -1194,30 +1196,21 @@ msgstr ""
 msgid "path=\"%s\" is not a glob pattern"
 msgstr ""
 
-#. TRANSLATORS: Parts of this file will be deleted
-#: ../bleachbit/Action.py ../bleachbit/Command.py
-msgid "Clean file"
-msgstr "Purigi dosieron"
-
+#. TRANSLATORS: This is the name of a cleaning action. 'Clean' is a verb.
+#. It shows in the log of actions performed.
 #: ../bleachbit/Action.py
 #, fuzzy
 #| msgid "Cookies"
 msgid "Clean cookies"
 msgstr "Kuketoj"
 
-#. TRANSLATORS: this is the context menu
-#. TRANSLATORS: This is the clean button on the main window.
-#. It makes permanent changes: usually deleting files, sometimes
-#. altering them.
-#: ../bleachbit/Action.py ../bleachbit/GuiWindow.py
-msgid "Clean"
-msgstr "Purigi"
-
+#. TRANSLATORS: %s is the command line to be executed
 #: ../bleachbit/Action.py
 #, python-format
 msgid "Run external command: %s"
 msgstr ""
 
+#. TRANSLATORS: This is the name of an action. 'Refresh' is a verb.
 #: ../bleachbit/Action.py
 msgid "Refresh Windows shell"
 msgstr ""
@@ -1229,11 +1222,15 @@ msgid ""
 "XML={option_xml}"
 msgstr ""
 
+#. TRANSLATORS: Warning printed to the log.
+#. %s expands to the path of the XML cleaner file that was skipped
 #: ../bleachbit/CleanerML.py
 #, python-format
 msgid "Ignoring cleaner because it is world writable: %s"
 msgstr ""
 
+#. TRANSLATORS: Error message printed to the log.
+#. %s expands to the path of the XML cleaner file
 #: ../bleachbit/CleanerML.py
 #, fuzzy, python-format
 #| msgid "not a valid cleaner: %s"
@@ -1298,7 +1295,7 @@ msgstr "Forviŝi permutaĵon kaj liberan memoron"
 msgid "This option is experimental and may cause system problems."
 msgstr "Ĉi tiu opcio estas eksperimenta kaj eblas kaŭzi sistemajn problemojn."
 
-#. TRANSLATORS: Prefetch is Microsoft Windows jargon.
+#. TRANSLATORS: Name of cleaning option. 'Prefetch' is Microsoft Windows jargon.
 #: ../bleachbit/Cleaner.py
 msgid "Prefetch"
 msgstr "Antaŭŝargi"
@@ -1311,12 +1308,13 @@ msgstr "Rubujo"
 msgid "Empty the recycle bin"
 msgstr "Malplenigi la rubujon"
 
-#. TRANSLATORS: 'Update' is a noun, and 'Update uninstallers' is an option to delete
-#. the uninstallers for software updates.
+#. TRANSLATORS: Name for cleaning option. 'Update' is an adjective to
+#. describe the kind of uninstallers.
 #: ../bleachbit/Cleaner.py
 msgid "Update uninstallers"
 msgstr "Malinstalilo de ĝisdatigoj"
 
+#. TRANSLATORS: Description of cleaning option.
 #: ../bleachbit/Cleaner.py
 msgid ""
 "Delete uninstallers for Microsoft updates including hotfixes, service packs, "
@@ -1325,6 +1323,7 @@ msgstr ""
 "Forviŝi malinstalilojn por ĝisdatigoj de Microsoft inkluzive de flikaĵoj, "
 "servopakoj kaj ĝisdatigoj de Internet Explorer"
 
+#. TRANSLATORS: Warning shown when selecting an option.
 #: ../bleachbit/Cleaner.py
 msgid "This option may prevent uninstalling some updates."
 msgstr ""
@@ -1380,6 +1379,7 @@ msgstr "Sistemo"
 
 #. TRANSLATORS: 'Empty' means 'unallocated.'
 #. %s expands to a path such as C:\ or /tmp/
+#. TRANSLATORS: Shows activity in the CLI, and %s is the path to the directory.
 #: ../bleachbit/Cleaner.py ../bleachbit/CLI.py
 #, python-format
 msgid "Wipe empty space in %s"
@@ -1401,11 +1401,13 @@ msgstr "Enportita el winapp2.ini"
 msgid "Wipe empty space %s"
 msgstr "_Forviŝi liberan diskospacon"
 
+#. TRANSLATORS: Error shown on CLI, and %s is the name of a cleaning action
 #: ../bleachbit/CLI.py
 #, python-format
 msgid "not a valid cleaner: %s"
 msgstr "ne valida purigilo: %s"
 
+#. TRANSLATORS: Error shown on CLI, and %s is the name of a cleaning action
 #: ../bleachbit/CLI.py
 #, python-format
 msgid "Wildcard characters are not allowed in --except: %s"
@@ -1422,125 +1424,162 @@ msgstr ""
 msgid "usage: %prog [options] cleaner.option1 [cleaner.option2 ...]"
 msgstr "uzado: %prog [opcioj] purigilo.opcio1 purigilo.opcio2"
 
+#. TRANSLATORS: Help for the --list-cleaners command on the CLI,
+#. and 'list' is a verb
 #: ../bleachbit/CLI.py
 msgid "list cleaners"
 msgstr "listigi purigilojn"
 
+#. TRANSLATORS: Help for the --preview command on the CLI,
+#. and 'preview' is a verb
 #: ../bleachbit/CLI.py
 msgid "preview files to be deleted and other changes"
 msgstr "antaŭrigardi forigotajn dosierojn kaj aliajn ŝanĝojn"
 
-#. TRANSLATORS: predefined cleaners are for applications, such as Firefox and Flash.
-#. This is different than cleaning an arbitrary file, such as a
-#. spreadsheet on the desktop.
+#. TRANSLATORS: Help for the --clean command on the CLI
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid "delete files and make other permanent changes"
 msgid "run cleaners to delete files and make other permanent changes"
 msgstr "Forigi dosierojn kaj fari aliajn permanentan ŝanĝojn"
 
+#. TRANSLATORS: Help for the --shred command on the CLI,
+#. and 'shred' is a verb
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid "Delete user-specified files and folders"
 msgid "shred specific files or folders"
 msgstr "Forigi dosierojn kaj dosierujojn specifitajn de la uzanto"
 
+#. TRANSLATORS: Help for the --wipe-empty-space
+#. command on the CLI, and 'wipe' is a verb
 #: ../bleachbit/CLI.py
 msgid "wipe empty space in the given paths"
 msgstr ""
 
+#. TRANSLATORS: Help for the --overwrite option on the CLI,
+#. and 'overwrite' is a verb
 #: ../bleachbit/CLI.py
 msgid "overwrite files to hide contents"
 msgstr "superskribi dosierojn por kaŝi enhavon"
 
+#. TRANSLATORS: Help for the --gui option on the CLI,
+#. and 'launch' is a verb
 #: ../bleachbit/CLI.py
 msgid "launch the graphical interface"
 msgstr "Lanĉu la grafikan fasadon"
 
+#. TRANSLATORS: Help for the --preset option on the CLI,
+#. and 'use' is a verb, referring to enabling options set earlier.
 #: ../bleachbit/CLI.py
 msgid "use options set in the graphical interface"
 msgstr "uzi opciojn agorditajn per la grafika fasado"
 
+#. TRANSLATORS: Help for the --all-but-warning option on the CLI,
+#. and 'enable' is a verb.
 #: ../bleachbit/CLI.py
 msgid "enable all options that do not have a warning"
 msgstr ""
 
+#. TRANSLATORS: Help for the --except option on the CLI,
+#. and 'exclude' is a verb.
 #: ../bleachbit/CLI.py
 msgid "exclude cleaner options (can be repeated, comma-separated)"
 msgstr ""
 
+#. TRANSLATORS: Help for the --debug option on the CLI,
+#. and 'set' is a verb.
 #: ../bleachbit/CLI.py
 msgid "set log level to verbose"
 msgstr ""
 
+#. TRANSLATORS: Help for --debug-log option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "log debug messages to file"
 msgstr ""
 
+#. TRANSLATORS: Help for --sysinfo option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "show system information"
 msgstr "montri sistemajn informojn"
 
+#. TRANSLATORS: Help for --version option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "output version information and exit"
 msgstr "montri versian informon kaj ĉesi"
 
+#. TRANSLATORS: Help for --no-uac option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "do not prompt for administrator privileges"
 msgstr "ne peti administrantan privilegion"
 
+#. TRANSLATORS: Help for --update-winapp2 command on the CLI.
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid "A new version is available."
 msgid "update winapp2.ini, if a new version is available"
 msgstr "Nova versio estas disponebla."
 
+#. TRANSLATORS: Error message shown on CLI.
 #: ../bleachbit/CLI.py
 msgid ""
 "Specify only one of these commands: --list-cleaners, --wipe-empty-space, --"
 "preview, --clean, --shred"
 msgstr ""
 
+#. TRANSLATORS: Log message on the CLI.
 #: ../bleachbit/CLI.py
 msgid "Checking online for updates to winapp2.ini"
 msgstr ""
 
+#. TRANSLATORS: Error message on the CLI.
 #: ../bleachbit/CLI.py
 msgid "No directories given for --wipe-empty-space"
 msgstr ""
 
+#. TRANSLATORS: Log message on the CLI.
 #: ../bleachbit/CLI.py
 msgid "Wiping empty space can take a long time."
 msgstr ""
 
+#. TRANSLATORS: Error message on the CLI.
 #: ../bleachbit/CLI.py
 msgid "No operations selected. Specify cleaner options."
 msgstr ""
 
+#. TRANSLATORS: '--overwrite' and '--clean' are command line options
 #: ../bleachbit/CLI.py
 msgid "--overwrite is intended only for use with --clean"
 msgstr ""
 
-#. TRANSLATORS: This is the label in the log indicating was
-#. skipped because it matches the whitelist
+#. TRANSLATORS: This is the name of a cleaning action. 'Clean' is a verb.
+#. It shows in the log of actions that would be performed (preview mode) or
+#. in the log of actions that were performed (clean mode).
+#: ../bleachbit/Command.py
+msgid "Clean file"
+msgstr "Purigi dosieron"
+
+#. TRANSLATORS: This is the label in the log indicating a path
+#. was skipped because it matches the whitelist
 #: ../bleachbit/Command.py
 msgid "Skip"
 msgstr "Preterpasi"
 
-#. TRANSLATORS: This is the label in the log indicating will be
-#. deleted (for previews) or was actually deleted
+#. TRANSLATORS: Label in the log indicating a path will be deleted
+#. (for previews) or was actually deleted (clean mode).
 #: ../bleachbit/Command.py
 msgid "Delete"
 msgstr "Forigi"
 
+#. TRANSLATORS: Warning message shown in the progress log.
 #: ../bleachbit/Command.py
 msgid ""
 "At least one file was locked by another process, so its contents could not "
 "be overwritten. It will be marked for deletion upon system reboot."
 msgstr ""
 
-#. TRANSLATORS: The file will be deleted when the
-#. system reboots
+#. TRANSLATORS: Label in the log when the file will be deleted
+#. when the system reboots. 'Mark' is a verb.
 #: ../bleachbit/Command.py
 msgid "Mark for deletion"
 msgstr "Marki kiel forigenda"
@@ -1550,67 +1589,84 @@ msgstr "Marki kiel forigenda"
 msgid "Truncate"
 msgstr "Fortranĉi"
 
+#. TRANSLATORS: A label of a command to delete a Windows registry key
 #: ../bleachbit/Command.py
 msgid "Delete registry key"
 msgstr "Forigi registrejan ŝlosilon"
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid "Directory is not empty: %s"
 msgstr ""
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid "Skipping mount point: %s"
 msgstr ""
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid "Device or resource is busy: %s"
 msgstr ""
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, fuzzy, python-format
 #| msgid "Files to be deleted: %d"
 msgid "Special file type cannot be deleted: %s"
 msgstr "Forigotaj dosieroj: %d"
 
+#. TRANSLATORS: This is a warning log message. %s is the directory path.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid ""
 "The environment variable TMP refers to a directory that does not exist: %s"
 msgstr ""
 
+#. TRANSLATORS: Title of a file chooser dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "Choose files to shred"
 msgstr "Elekti forviŝotajn dosierojn"
 
+#. TRANSLATORS: Title of a folder chooser dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "Choose folder to shred"
 msgstr "Elekti forviŝotan dosierujon"
 
+#. TRANSLATORS: Button label in a folder chooser dialog.
+#. TRANSLATORS: Label for the Delete button in the file choose dialog
+#. and delete confirmation dialog.
 #: ../bleachbit/GuiApplication.py ../bleachbit/GuiBasic.py
 #, fuzzy
 #| msgid "Delete"
 msgid "_Delete"
 msgstr "Forigi"
 
+#. TRANSLATORS: Warning log message when attempting to paste files/folders to shred.
 #: ../bleachbit/GuiApplication.py
 msgid "No paths found in clipboard."
 msgstr ""
 
+#. TRANSLATORS: Title of a folder chooser dialog.
 #: ../bleachbit/GuiApplication.py ../bleachbit/GuiPreferences.py
 msgid "Choose a folder"
 msgstr "Elekti dosierujon"
 
+#. TRANSLATORS: Button label in a folder chooser dialog.
+#. Underscore is for accelerator key.
 #: ../bleachbit/GuiApplication.py
 msgid "_OK"
 msgstr ""
 
+#. TRANSLATORS: Title of the 'About' dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "Program to clean unnecessary files"
 msgstr "Programaro por forigi nenecesajn dosierojn"
 
+#. TRANSLATORS: License text shown in the 'About' dialog.
 #: ../bleachbit/GuiApplication.py
 #, fuzzy
 #| msgid ""
@@ -1635,22 +1691,32 @@ msgstr ""
 "  Ivan Camilo Quintero Santacruz https://launchpad.net/~ivanca2291\n"
 "  Michael Moroni https://launchpad.net/~airon90"
 
+#. TRANSLATORS: Title of the system information dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "System information"
 msgstr "Sistema informo"
 
+#. TRANSLATORS: Label for the Cancel button in several dialog windows:
+#. file chooser, folder choose, delete confirmation, and warning dialogs.
+#. The underscore indicates the accelerator key.
+#. TRANSLATORS: Button label in the manage cookies dialog.
+#. The underscore indicates the accelerator key.
 #: ../bleachbit/GuiBasic.py ../bleachbit/GuiCookie.py
 msgid "_Cancel"
 msgstr ""
 
+#. TRANSLATORS: This is a label for the Open button in a file chooser dialog.
 #: ../bleachbit/GuiBasic.py
 msgid "_Open"
 msgstr ""
 
+#. TRANSLATORS: Title of the delete confirmation dialog.
 #: ../bleachbit/GuiBasic.py
 msgid "Delete confirmation"
 msgstr "Forigi konfirmon"
 
+#. TRANSLATORS: This message appears in a dialog window when the user
+#. chooses to shred settings and quit.
 #: ../bleachbit/GuiBasic.py
 msgid ""
 "This function deletes all BleachBit settings and then quits the application. "
@@ -1658,6 +1724,8 @@ msgid ""
 "time you start BleachBit, the settings will initialize to default values."
 msgstr ""
 
+#. TRANSLATORS: This message appears in a dialog window when the user
+#. asks the user to confirm deleting files when a preview was run.
 #: ../bleachbit/GuiBasic.py
 msgid ""
 "Are you sure you want to permanently delete files according to the selected "
@@ -1667,28 +1735,40 @@ msgstr ""
 "Ĉu vi certe volas daŭre forigi dosierojn laŭ la elektitaj agoj? Aktualaj "
 "dosieroj, kiuj estos forigataj, eble ŝanĝiĝis ekde la rulado de la antaŭvido."
 
+#. TRANSLATORS: This message appears in a dialog window when the user
+#. asks the user to confirm deleting files when no preview was run.
 #: ../bleachbit/GuiBasic.py
 msgid "Are you sure you want to permanently delete these files?"
 msgstr "Ĉu vi certe volas daŭre forigi ĉi tiujn dosierojn?"
 
+#. TRANSLATORS: Check button shown in the confirm delete dialog.
+#. If unchecked, then it will not confirm next time.
 #: ../bleachbit/GuiBasic.py ../bleachbit/GuiPreferences.py
 msgid "Confirm before delete"
 msgstr ""
 
+#. TRANSLATORS: Title of a warning dialog. %(option)s is the name
+#. of the option being enabled (e.g. "shred files").
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid "Enable %(option)s"
 msgstr ""
 
+#. TRANSLATORS: Check button label. %(option)s is the name of
+#. the option being enabled (e.g. "shred files").
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid "Remember my choice for %(option)s"
 msgstr ""
 
+#. TRANSLATORS: Button label in a warning dialog to confirm enabling an option.
+#. The underscore is the accelerator key.
 #: ../bleachbit/GuiBasic.py
 msgid "_Enable anyway"
 msgstr ""
 
+#. TRANSLATORS: This is an error message shown to root users.
+#. %s expands to a web URL.
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid ""
@@ -1699,12 +1779,14 @@ msgstr ""
 "Ĉar vi rulas kiel ĉefuzanto, bonvolu mane malfermi la ligilon per retumilo:\n"
 " %s"
 
-#. TRANSLATORS: %s expands to www.bleachbit.org or similar
+#. TRANSLATORS: The question appears in a confirmation dialog.
+#. %s expands to www.bleachbit.org or similar
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid "Open web browser to %s?"
 msgstr "Ĉu malfermi retumilon ĉe %s?"
 
+#. TRANSLATORS: Title of a confirmation dialog.
 #: ../bleachbit/GuiBasic.py ../bleachbit/GuiWindow.py
 msgid "Confirm"
 msgstr ""
@@ -1746,6 +1828,8 @@ msgstr ""
 msgid "Number of files"
 msgstr ""
 
+#. TRANSLATORS: This is an error message shown in an infobar
+#. when the user has not selected a destination folder.
 #: ../bleachbit/GuiChaff.py
 msgid "Select destination folder"
 msgstr ""
@@ -1766,12 +1850,15 @@ msgstr "Forigi la aktualan seancon"
 msgid "Do not delete"
 msgstr "Forigi"
 
+#. TRANSLATORS: Button label in a dialog window to start making
+#. chaff files.
 #: ../bleachbit/GuiChaff.py
 #, fuzzy
 #| msgid "Backup files"
 msgid "Make files"
 msgstr "Sekurkopii dosierojn"
 
+#. TRANSLATORS: The question shows in a dialog.
 #: ../bleachbit/GuiChaff.py
 msgid "Download data needed for chaff generator?"
 msgstr ""
@@ -1782,44 +1869,55 @@ msgstr ""
 msgid "Generating files"
 msgstr "Purigi dosieron"
 
+#. TRANSLATORS: Title of the dialog to manage cookies to keep
 #: ../bleachbit/GuiCookie.py
 msgid "Manage cookies to keep"
 msgstr ""
 
+#. TRANSLATORS: Instruction label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Select the cookies to keep when cleaning cookies across browsers."
 msgstr ""
 
+#. TRANSLATORS: Label for the search entry in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 #, fuzzy
 #| msgid "Search tool"
 msgid "Search:"
 msgstr "Serĉilo"
 
+#. TRANSLATORS: Placeholder text in the search entry in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Filter cookies..."
 msgstr ""
 
+#. TRANSLATORS: Toggle button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Show Selected"
 msgstr ""
 
+#. TRANSLATORS: Tooltip for the "Show Selected" toggle button.
 #: ../bleachbit/GuiCookie.py
 msgid "Only show cookies that are currently selected"
 msgstr ""
 
+#. TRANSLATORS: Column header in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Host"
 msgstr ""
 
+#. TRANSLATORS: Button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Select All"
 msgstr ""
 
+#. TRANSLATORS: Button label in the manage cookies dialog.
+#. The underscore indicates the accelerator key.
 #: ../bleachbit/GuiCookie.py
 msgid "Deselect All"
 msgstr ""
 
+#. TRANSLATORS: Button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Keep Selected"
 msgstr ""
@@ -2152,14 +2250,21 @@ msgstr ""
 msgid "This option requires expert mode. Enable it in Preferences."
 msgstr ""
 
-#. TRANSLATORS: this is the context menu
+#. TRANSLATORS: Label in a context menu. 'Preview' is a verb.
 #. TRANSLATORS: This is the preview button on the main window.  It
 #. previews changes.
 #: ../bleachbit/GuiWindow.py
 msgid "Preview"
 msgstr "Antaŭrigardo"
 
-#. TRANSLATORS: this is the context menu
+#. TRANSLATORS: Label in a context menu. 'Clean' is a verb.
+#. TRANSLATORS: Label for the clean button on header bar of the
+#. the main window. 'Clean' is a verb.
+#: ../bleachbit/GuiWindow.py
+msgid "Clean"
+msgstr "Purigi"
+
+#. TRANSLATORS: Label in a context menu.
 #: ../bleachbit/GuiWindow.py
 #, fuzzy
 #| msgid "Cookies"
@@ -2180,6 +2285,8 @@ msgstr ""
 msgid "Clean files in the selected operations"
 msgstr "Purigi dosierojn per la elektitaj operacioj"
 
+#. TRANSLATORS: Label for the stop button on header bar of the
+#. the main window. 'Abort' is a verb.
 #: ../bleachbit/GuiWindow.py
 msgid "Abort"
 msgstr ""

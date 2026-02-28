@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bleachbit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 23:41-0700\n"
+"POT-Creation-Date: 2026-02-23 09:52-0700\n"
 "PO-Revision-Date: 2025-04-27 19:46+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/bleachbit/main/ta/"
@@ -125,6 +125,7 @@ msgstr "வரைகலை பார்வையாளர்"
 msgid "Cache"
 msgstr "இடைமாற்று"
 
+#. TRANSLATORS: The description of what certain cleaning options do.
 #: ../cleaners/xine.xml ../cleaners/dnf.xml ../cleaners/miro.xml
 #: ../cleaners/amsn.xml ../cleaners/librewolf.xml ../cleaners/rhythmbox.xml
 #: ../cleaners/beagle.xml ../cleaners/yum.xml
@@ -366,6 +367,7 @@ msgid ""
 msgstr ""
 "பிளே எண்ணிக்கை மற்றும் கடைசியாக விளையாடியவை போன்ற தகவல்களைக் கொண்ட தரவுத்தளத்தை நீக்கு"
 
+#. TRANSLATORS: The description of a cleaner.
 #: ../cleaners/microsoft_office.xml ../cleaners/libreoffice.xml
 #: ../bleachbit/Cleaner.py
 msgid "Office suite"
@@ -1163,30 +1165,21 @@ msgstr "தேடல் = \"நடை\" வழக்கமான கோப்ப
 msgid "path=\"%s\" is not a glob pattern"
 msgstr "பாதை = \"%s\" ஒரு குளோப் முறை அல்ல"
 
-#. TRANSLATORS: Parts of this file will be deleted
-#: ../bleachbit/Action.py ../bleachbit/Command.py
-msgid "Clean file"
-msgstr "கோப்பினை துடை"
-
+#. TRANSLATORS: This is the name of a cleaning action. 'Clean' is a verb.
+#. It shows in the log of actions performed.
 #: ../bleachbit/Action.py
 #, fuzzy
 #| msgid "Cookies"
 msgid "Clean cookies"
 msgstr "நினைவிகள்"
 
-#. TRANSLATORS: this is the context menu
-#. TRANSLATORS: This is the clean button on the main window.
-#. It makes permanent changes: usually deleting files, sometimes
-#. altering them.
-#: ../bleachbit/Action.py ../bleachbit/GuiWindow.py
-msgid "Clean"
-msgstr "துடை"
-
+#. TRANSLATORS: %s is the command line to be executed
 #: ../bleachbit/Action.py
 #, python-format
 msgid "Run external command: %s"
 msgstr "வெளிப்புற கட்டளையை இயக்கவும்: %s"
 
+#. TRANSLATORS: This is the name of an action. 'Refresh' is a verb.
 #: ../bleachbit/Action.py
 msgid "Refresh Windows shell"
 msgstr ""
@@ -1198,11 +1191,15 @@ msgid ""
 "XML={option_xml}"
 msgstr "கிளீனர் ஐடி = {cleaner_id}, விருப்பம் நீகுமொ = {option_xml}"
 
+#. TRANSLATORS: Warning printed to the log.
+#. %s expands to the path of the XML cleaner file that was skipped
 #: ../bleachbit/CleanerML.py
 #, python-format
 msgid "Ignoring cleaner because it is world writable: %s"
 msgstr "துப்புரவாளரைப் புறக்கணித்தல் ஏனெனில் இது உலகத்தை எழுதக்கூடியது: %s"
 
+#. TRANSLATORS: Error message printed to the log.
+#. %s expands to the path of the XML cleaner file
 #: ../bleachbit/CleanerML.py
 #, python-format
 msgid "Error reading cleaner: %s"
@@ -1266,7 +1263,7 @@ msgstr "இடமாற்று மற்றும் இலவச நினை
 msgid "This option is experimental and may cause system problems."
 msgstr "இந்த விருப்பம் சோதனை மற்றும் கணினி சிக்கல்களை ஏற்படுத்தக்கூடும்."
 
-#. TRANSLATORS: Prefetch is Microsoft Windows jargon.
+#. TRANSLATORS: Name of cleaning option. 'Prefetch' is Microsoft Windows jargon.
 #: ../bleachbit/Cleaner.py
 msgid "Prefetch"
 msgstr "தற்காலிக"
@@ -1279,12 +1276,13 @@ msgstr "மீள்சுழற்சிக் கூடை"
 msgid "Empty the recycle bin"
 msgstr "மீள்சுழற்சிக் கூடையை வெறுமனாக்கு"
 
-#. TRANSLATORS: 'Update' is a noun, and 'Update uninstallers' is an option to delete
-#. the uninstallers for software updates.
+#. TRANSLATORS: Name for cleaning option. 'Update' is an adjective to
+#. describe the kind of uninstallers.
 #: ../bleachbit/Cleaner.py
 msgid "Update uninstallers"
 msgstr "நிறுவல் நீக்குபவர்களைப் புதுப்பிக்கவும்"
 
+#. TRANSLATORS: Description of cleaning option.
 #: ../bleachbit/Cleaner.py
 msgid ""
 "Delete uninstallers for Microsoft updates including hotfixes, service packs, "
@@ -1293,6 +1291,7 @@ msgstr ""
 "ஆட்ஃபிக்ச், சர்வீச் பேக்குகள் மற்றும் இன்டர்நெட் எக்ச்ப்ளோரர் புதுப்பிப்புகள் உள்ளிட்ட நுண்மென் "
 "புதுப்பிப்புகளுக்கு நிறுவல் நீக்கிகளை நீக்கு"
 
+#. TRANSLATORS: Warning shown when selecting an option.
 #: ../bleachbit/Cleaner.py
 msgid "This option may prevent uninstalling some updates."
 msgstr ""
@@ -1349,6 +1348,7 @@ msgstr "அமைப்பு"
 
 #. TRANSLATORS: 'Empty' means 'unallocated.'
 #. %s expands to a path such as C:\ or /tmp/
+#. TRANSLATORS: Shows activity in the CLI, and %s is the path to the directory.
 #: ../bleachbit/Cleaner.py ../bleachbit/CLI.py
 #, python-format
 msgid "Wipe empty space in %s"
@@ -1368,11 +1368,13 @@ msgstr "WinApp2.ini இலிருந்து கிளீனர்களை �
 msgid "Wipe empty space %s"
 msgstr "_ விட் இலவச இடம்"
 
+#. TRANSLATORS: Error shown on CLI, and %s is the name of a cleaning action
 #: ../bleachbit/CLI.py
 #, python-format
 msgid "not a valid cleaner: %s"
 msgstr "செல்லுபடியாகும் கிளீனர் அல்ல: %s"
 
+#. TRANSLATORS: Error shown on CLI, and %s is the name of a cleaning action
 #: ../bleachbit/CLI.py
 #, python-format
 msgid "Wildcard characters are not allowed in --except: %s"
@@ -1389,75 +1391,99 @@ msgstr ""
 msgid "usage: %prog [options] cleaner.option1 [cleaner.option2 ...]"
 msgstr "பயன்பாடு: %prog [விருப்பங்கள்] கிளீனர்"
 
+#. TRANSLATORS: Help for the --list-cleaners command on the CLI,
+#. and 'list' is a verb
 #: ../bleachbit/CLI.py
 msgid "list cleaners"
 msgstr "பட்டியல் கிளீனர்கள்"
 
+#. TRANSLATORS: Help for the --preview command on the CLI,
+#. and 'preview' is a verb
 #: ../bleachbit/CLI.py
 msgid "preview files to be deleted and other changes"
 msgstr "நீக்கப்பட வேண்டிய கோப்புகள் மற்றும் பிற மாற்றங்களை முன்னோட்டமிடுங்கள்"
 
-#. TRANSLATORS: predefined cleaners are for applications, such as Firefox and Flash.
-#. This is different than cleaning an arbitrary file, such as a
-#. spreadsheet on the desktop.
+#. TRANSLATORS: Help for the --clean command on the CLI
 #: ../bleachbit/CLI.py
 msgid "run cleaners to delete files and make other permanent changes"
 msgstr "கோப்புகளை நீக்க மற்றும் பிற நிரந்தர மாற்றங்களைச் செய்ய கிளீனர்களை இயக்கவும்"
 
+#. TRANSLATORS: Help for the --shred command on the CLI,
+#. and 'shred' is a verb
 #: ../bleachbit/CLI.py
 msgid "shred specific files or folders"
 msgstr "குறிப்பிட்ட கோப்புகள் அல்லது கோப்புறைகளை துண்டிக்கவும்"
 
+#. TRANSLATORS: Help for the --wipe-empty-space
+#. command on the CLI, and 'wipe' is a verb
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid "wipe free space in the given paths"
 msgid "wipe empty space in the given paths"
 msgstr "கொடுக்கப்பட்ட பாதைகளில் இலவச இடத்தைத் துடைக்கவும்"
 
+#. TRANSLATORS: Help for the --overwrite option on the CLI,
+#. and 'overwrite' is a verb
 #: ../bleachbit/CLI.py
 msgid "overwrite files to hide contents"
 msgstr "உள்ளடக்கங்களை மறைக்க கோப்புகளை மேலெழுதவும்"
 
+#. TRANSLATORS: Help for the --gui option on the CLI,
+#. and 'launch' is a verb
 #: ../bleachbit/CLI.py
 msgid "launch the graphical interface"
 msgstr "வரைகலை இடைமுகத்தைத் தொடங்கவும்"
 
+#. TRANSLATORS: Help for the --preset option on the CLI,
+#. and 'use' is a verb, referring to enabling options set earlier.
 #: ../bleachbit/CLI.py
 msgid "use options set in the graphical interface"
 msgstr "வரைகலை இடைமுகத்தில் அமைக்கப்பட்ட விருப்பங்களைப் பயன்படுத்தவும்"
 
+#. TRANSLATORS: Help for the --all-but-warning option on the CLI,
+#. and 'enable' is a verb.
 #: ../bleachbit/CLI.py
 msgid "enable all options that do not have a warning"
 msgstr "எச்சரிக்கை இல்லாத அனைத்து விருப்பங்களையும் இயக்கவும்"
 
+#. TRANSLATORS: Help for the --except option on the CLI,
+#. and 'exclude' is a verb.
 #: ../bleachbit/CLI.py
 msgid "exclude cleaner options (can be repeated, comma-separated)"
 msgstr ""
 
+#. TRANSLATORS: Help for the --debug option on the CLI,
+#. and 'set' is a verb.
 #: ../bleachbit/CLI.py
 msgid "set log level to verbose"
 msgstr "பதிவு அளவை வாய்மொழியாக அமைக்கவும்"
 
+#. TRANSLATORS: Help for --debug-log option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "log debug messages to file"
 msgstr "கோப்புக்கு பிழைத்திருத்த செய்திகளை பதிவு செய்யுங்கள்"
 
+#. TRANSLATORS: Help for --sysinfo option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "show system information"
 msgstr "அமைப்புத் தகவலைக் காட்டு"
 
+#. TRANSLATORS: Help for --version option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "output version information and exit"
 msgstr "வெளியீட்டு பதிப்பு செய்தி மற்றும் வெளியேறுதல்"
 
+#. TRANSLATORS: Help for --no-uac option on the CLI.
 #: ../bleachbit/CLI.py
 msgid "do not prompt for administrator privileges"
 msgstr "நிர்வாகி சலுகைகளுக்கு கேட்க வேண்டாம்"
 
+#. TRANSLATORS: Help for --update-winapp2 command on the CLI.
 #: ../bleachbit/CLI.py
 msgid "update winapp2.ini, if a new version is available"
 msgstr "புதிய பதிப்பு கிடைத்தால், winapp2.ini ஐப் புதுப்பிக்கவும்"
 
+#. TRANSLATORS: Error message shown on CLI.
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid ""
@@ -1470,44 +1496,57 @@ msgstr ""
 "இந்த கட்டளைகளில் ஒன்றை மட்டுமே குறிப்பிடவும்:--பட்டியல்-துப்புரவாளர்கள்,-துடைப்பம் இல்லாத "
 "இடைவெளி,-முன்னுரிமை,-கிளீன்"
 
+#. TRANSLATORS: Log message on the CLI.
 #: ../bleachbit/CLI.py
 msgid "Checking online for updates to winapp2.ini"
 msgstr "WinApp2.ini க்கான புதுப்பிப்புகளுக்கு ஆன்லைனில் சரிபார்க்கிறது"
 
+#. TRANSLATORS: Error message on the CLI.
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid "No directories given for --wipe-free-space"
 msgid "No directories given for --wipe-empty-space"
 msgstr "-துடைப்பம் இல்லாத இடத்திற்கு எந்த கோப்பகங்களும் கொடுக்கப்படவில்லை"
 
+#. TRANSLATORS: Log message on the CLI.
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid "Wiping free space can take a long time."
 msgid "Wiping empty space can take a long time."
 msgstr "இலவச இடத்தைத் துடைப்பது நீண்ட நேரம் ஆகலாம்."
 
+#. TRANSLATORS: Error message on the CLI.
 #: ../bleachbit/CLI.py
 #, fuzzy
 #| msgid "No work to do. Specify options."
 msgid "No operations selected. Specify cleaner options."
 msgstr "செய்ய வேலை இல்லை. விருப்பங்களைக் குறிப்பிடவும்."
 
+#. TRANSLATORS: '--overwrite' and '--clean' are command line options
 #: ../bleachbit/CLI.py
 msgid "--overwrite is intended only for use with --clean"
 msgstr "-ஓவர்ரைட்-கிளீனுடன் பயன்படுத்த மட்டுமே நோக்கம் கொண்டது"
 
-#. TRANSLATORS: This is the label in the log indicating was
-#. skipped because it matches the whitelist
+#. TRANSLATORS: This is the name of a cleaning action. 'Clean' is a verb.
+#. It shows in the log of actions that would be performed (preview mode) or
+#. in the log of actions that were performed (clean mode).
+#: ../bleachbit/Command.py
+msgid "Clean file"
+msgstr "கோப்பினை துடை"
+
+#. TRANSLATORS: This is the label in the log indicating a path
+#. was skipped because it matches the whitelist
 #: ../bleachbit/Command.py
 msgid "Skip"
 msgstr "தவிர்"
 
-#. TRANSLATORS: This is the label in the log indicating will be
-#. deleted (for previews) or was actually deleted
+#. TRANSLATORS: Label in the log indicating a path will be deleted
+#. (for previews) or was actually deleted (clean mode).
 #: ../bleachbit/Command.py
 msgid "Delete"
 msgstr "அழி"
 
+#. TRANSLATORS: Warning message shown in the progress log.
 #: ../bleachbit/Command.py
 msgid ""
 "At least one file was locked by another process, so its contents could not "
@@ -1516,8 +1555,8 @@ msgstr ""
 "குறைந்தது ஒரு கோப்பையாவது மற்றொரு செயல்முறையால் பூட்டப்பட்டிருந்தது, எனவே அதன் "
 "உள்ளடக்கங்களை மேலெழுத முடியவில்லை. கணினி மறுதொடக்கத்தில் நீக்க இது குறிக்கப்படும்."
 
-#. TRANSLATORS: The file will be deleted when the
-#. system reboots
+#. TRANSLATORS: Label in the log when the file will be deleted
+#. when the system reboots. 'Mark' is a verb.
 #: ../bleachbit/Command.py
 msgid "Mark for deletion"
 msgstr "அழிப்பதற்கு குறி"
@@ -1527,64 +1566,81 @@ msgstr "அழிப்பதற்கு குறி"
 msgid "Truncate"
 msgstr "துண்டிக்கவும்"
 
+#. TRANSLATORS: A label of a command to delete a Windows registry key
 #: ../bleachbit/Command.py
 msgid "Delete registry key"
 msgstr "பதிவு விசையை நீக்கு"
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid "Directory is not empty: %s"
 msgstr "அடைவு காலியாக இல்லை: %s"
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid "Skipping mount point: %s"
 msgstr "மவுண்ட் பாயிண்டைத் தவிர்ப்பது: %s"
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid "Device or resource is busy: %s"
 msgstr "சாதனம் அல்லது சான்று பிசியாக உள்ளது: %s"
 
+#. TRANSLATORS: Log message where %s is the pathname.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid "Special file type cannot be deleted: %s"
 msgstr "சிறப்பு கோப்பு வகையை நீக்க முடியாது: %s"
 
+#. TRANSLATORS: This is a warning log message. %s is the directory path.
 #: ../bleachbit/FileUtilities.py
 #, python-format
 msgid ""
 "The environment variable TMP refers to a directory that does not exist: %s"
 msgstr "சுற்றுச்சூழல் மாறி TMP என்பது இல்லாத ஒரு கோப்பகத்தைக் குறிக்கிறது: %s"
 
+#. TRANSLATORS: Title of a file chooser dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "Choose files to shred"
 msgstr "துண்டாக்க கோப்புகளைத் தேர்வுசெய்க"
 
+#. TRANSLATORS: Title of a folder chooser dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "Choose folder to shred"
 msgstr "துண்டாக்க கோப்புறையைத் தேர்வுசெய்க"
 
+#. TRANSLATORS: Button label in a folder chooser dialog.
+#. TRANSLATORS: Label for the Delete button in the file choose dialog
+#. and delete confirmation dialog.
 #: ../bleachbit/GuiApplication.py ../bleachbit/GuiBasic.py
 msgid "_Delete"
 msgstr "_Delete"
 
+#. TRANSLATORS: Warning log message when attempting to paste files/folders to shred.
 #: ../bleachbit/GuiApplication.py
 msgid "No paths found in clipboard."
 msgstr "கிளிப்போர்டில் பாதைகள் எதுவும் காணப்படவில்லை."
 
+#. TRANSLATORS: Title of a folder chooser dialog.
 #: ../bleachbit/GuiApplication.py ../bleachbit/GuiPreferences.py
 msgid "Choose a folder"
 msgstr "ஒரு அடைவை தேர்ந்தெடுக்கவும்"
 
+#. TRANSLATORS: Button label in a folder chooser dialog.
+#. Underscore is for accelerator key.
 #: ../bleachbit/GuiApplication.py
 msgid "_OK"
 msgstr "_Ok"
 
+#. TRANSLATORS: Title of the 'About' dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "Program to clean unnecessary files"
 msgstr "தேவையற்ற கோப்புகளை தூய்மை செய்வதற்கான நிரல்"
 
+#. TRANSLATORS: License text shown in the 'About' dialog.
 #: ../bleachbit/GuiApplication.py
 msgid ""
 "GNU General Public License version 3 or later.\n"
@@ -1601,22 +1657,32 @@ msgstr ""
 msgid "translator-credits"
 msgstr "மொழி பெயர்ப்பாளர் நன்றிகள்"
 
+#. TRANSLATORS: Title of the system information dialog.
 #: ../bleachbit/GuiApplication.py
 msgid "System information"
 msgstr "அமைப்பு தகவல்"
 
+#. TRANSLATORS: Label for the Cancel button in several dialog windows:
+#. file chooser, folder choose, delete confirmation, and warning dialogs.
+#. The underscore indicates the accelerator key.
+#. TRANSLATORS: Button label in the manage cookies dialog.
+#. The underscore indicates the accelerator key.
 #: ../bleachbit/GuiBasic.py ../bleachbit/GuiCookie.py
 msgid "_Cancel"
 msgstr "_CANCEL"
 
+#. TRANSLATORS: This is a label for the Open button in a file chooser dialog.
 #: ../bleachbit/GuiBasic.py
 msgid "_Open"
 msgstr "_OPEN"
 
+#. TRANSLATORS: Title of the delete confirmation dialog.
 #: ../bleachbit/GuiBasic.py
 msgid "Delete confirmation"
 msgstr "உறுதிப்படுத்தலை நீக்கு"
 
+#. TRANSLATORS: This message appears in a dialog window when the user
+#. chooses to shred settings and quit.
 #: ../bleachbit/GuiBasic.py
 msgid ""
 "This function deletes all BleachBit settings and then quits the application. "
@@ -1628,6 +1694,8 @@ msgstr ""
 "பயன்படுத்தவும். அடுத்த முறை நீங்கள் ப்ளீச்ச்பிட்டைத் தொடங்கும்போது, அமைப்புகள் இயல்புநிலை "
 "மதிப்புகளுக்கு துவக்கப்படும்."
 
+#. TRANSLATORS: This message appears in a dialog window when the user
+#. asks the user to confirm deleting files when a preview was run.
 #: ../bleachbit/GuiBasic.py
 msgid ""
 "Are you sure you want to permanently delete files according to the selected "
@@ -1637,28 +1705,40 @@ msgstr ""
 "தேர்ந்தெடுக்கப்பட்ட செயல்பாடுகளின்படி கோப்புகளை நிரந்தரமாக நீக்க விரும்புகிறீர்களா? நீங்கள் "
 "முன்னோட்டத்தை இயக்கியதிலிருந்து நீக்கப்படும் உண்மையான கோப்புகள் மாறியிருக்கலாம்."
 
+#. TRANSLATORS: This message appears in a dialog window when the user
+#. asks the user to confirm deleting files when no preview was run.
 #: ../bleachbit/GuiBasic.py
 msgid "Are you sure you want to permanently delete these files?"
 msgstr "இந்த கோப்புகளை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?"
 
+#. TRANSLATORS: Check button shown in the confirm delete dialog.
+#. If unchecked, then it will not confirm next time.
 #: ../bleachbit/GuiBasic.py ../bleachbit/GuiPreferences.py
 msgid "Confirm before delete"
 msgstr "நீக்குவதற்கு முன் உறுதிப்படுத்தவும்"
 
+#. TRANSLATORS: Title of a warning dialog. %(option)s is the name
+#. of the option being enabled (e.g. "shred files").
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid "Enable %(option)s"
 msgstr ""
 
+#. TRANSLATORS: Check button label. %(option)s is the name of
+#. the option being enabled (e.g. "shred files").
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid "Remember my choice for %(option)s"
 msgstr ""
 
+#. TRANSLATORS: Button label in a warning dialog to confirm enabling an option.
+#. The underscore is the accelerator key.
 #: ../bleachbit/GuiBasic.py
 msgid "_Enable anyway"
 msgstr ""
 
+#. TRANSLATORS: This is an error message shown to root users.
+#. %s expands to a web URL.
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid ""
@@ -1670,12 +1750,14 @@ msgstr ""
 "திறக்கவும்:\n"
 " %s"
 
-#. TRANSLATORS: %s expands to www.bleachbit.org or similar
+#. TRANSLATORS: The question appears in a confirmation dialog.
+#. %s expands to www.bleachbit.org or similar
 #: ../bleachbit/GuiBasic.py
 #, python-format
 msgid "Open web browser to %s?"
 msgstr "வலை உலாவியை %s க்கு திறக்கவா?"
 
+#. TRANSLATORS: Title of a confirmation dialog.
 #: ../bleachbit/GuiBasic.py ../bleachbit/GuiWindow.py
 msgid "Confirm"
 msgstr "உறுதிப்படுத்தவும்"
@@ -1713,6 +1795,8 @@ msgstr "இலாரி கிளிண்டனின் மின்னஞ்�
 msgid "Number of files"
 msgstr "கோப்புகளின் எண்ணிக்கை"
 
+#. TRANSLATORS: This is an error message shown in an infobar
+#. when the user has not selected a destination folder.
 #: ../bleachbit/GuiChaff.py
 msgid "Select destination folder"
 msgstr "இலக்கு கோப்புறையைத் தேர்ந்தெடுக்கவும்"
@@ -1729,10 +1813,13 @@ msgstr "துண்டாக்காமல் நீக்கு"
 msgid "Do not delete"
 msgstr "நீக்க வேண்டாம்"
 
+#. TRANSLATORS: Button label in a dialog window to start making
+#. chaff files.
 #: ../bleachbit/GuiChaff.py
 msgid "Make files"
 msgstr "கோப்புகளை உருவாக்குங்கள்"
 
+#. TRANSLATORS: The question shows in a dialog.
 #: ../bleachbit/GuiChaff.py
 msgid "Download data needed for chaff generator?"
 msgstr "சாஃப் செனரேட்டருக்கு தேவையான தரவைப் பதிவிறக்கவா?"
@@ -1741,44 +1828,55 @@ msgstr "சாஃப் செனரேட்டருக்கு தேவை�
 msgid "Generating files"
 msgstr "கோப்புகளை உருவாக்குதல்"
 
+#. TRANSLATORS: Title of the dialog to manage cookies to keep
 #: ../bleachbit/GuiCookie.py
 msgid "Manage cookies to keep"
 msgstr ""
 
+#. TRANSLATORS: Instruction label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Select the cookies to keep when cleaning cookies across browsers."
 msgstr ""
 
+#. TRANSLATORS: Label for the search entry in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 #, fuzzy
 #| msgid "Search tool"
 msgid "Search:"
 msgstr "தேடற் கருவி"
 
+#. TRANSLATORS: Placeholder text in the search entry in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Filter cookies..."
 msgstr ""
 
+#. TRANSLATORS: Toggle button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Show Selected"
 msgstr ""
 
+#. TRANSLATORS: Tooltip for the "Show Selected" toggle button.
 #: ../bleachbit/GuiCookie.py
 msgid "Only show cookies that are currently selected"
 msgstr ""
 
+#. TRANSLATORS: Column header in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Host"
 msgstr ""
 
+#. TRANSLATORS: Button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Select All"
 msgstr ""
 
+#. TRANSLATORS: Button label in the manage cookies dialog.
+#. The underscore indicates the accelerator key.
 #: ../bleachbit/GuiCookie.py
 msgid "Deselect All"
 msgstr ""
 
+#. TRANSLATORS: Button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Keep Selected"
 msgstr ""
@@ -2123,14 +2221,21 @@ msgstr ""
 msgid "This option requires expert mode. Enable it in Preferences."
 msgstr ""
 
-#. TRANSLATORS: this is the context menu
+#. TRANSLATORS: Label in a context menu. 'Preview' is a verb.
 #. TRANSLATORS: This is the preview button on the main window.  It
 #. previews changes.
 #: ../bleachbit/GuiWindow.py
 msgid "Preview"
 msgstr "முன்னோட்டம்"
 
-#. TRANSLATORS: this is the context menu
+#. TRANSLATORS: Label in a context menu. 'Clean' is a verb.
+#. TRANSLATORS: Label for the clean button on header bar of the
+#. the main window. 'Clean' is a verb.
+#: ../bleachbit/GuiWindow.py
+msgid "Clean"
+msgstr "துடை"
+
+#. TRANSLATORS: Label in a context menu.
 #: ../bleachbit/GuiWindow.py
 #, fuzzy
 #| msgid "Cookies"
@@ -2151,6 +2256,8 @@ msgstr ""
 msgid "Clean files in the selected operations"
 msgstr "தேர்ந்தெடுக்கப்பட்ட செயல்பாடுகளில் கோப்புகளை தூய்மை செய்யுங்கள்"
 
+#. TRANSLATORS: Label for the stop button on header bar of the
+#. the main window. 'Abort' is a verb.
 #: ../bleachbit/GuiWindow.py
 msgid "Abort"
 msgstr "கருக்கலைப்பு"
