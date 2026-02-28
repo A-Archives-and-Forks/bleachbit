@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: andrew@bleachbit.org\n"
 "POT-Creation-Date: 2026-02-23 09:52-0700\n"
 "PO-Revision-Date: 2026-03-01 09:09+0000\n"
-"Last-Translator: Alex Wood <github@alex-wood.org.uk>\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "bleachbit/main/en_GB/>\n"
 "Language: en_GB\n"
@@ -1870,7 +1870,6 @@ msgstr "Deselect All"
 
 #. TRANSLATORS: Button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
-#, fuzzy
 msgid "Keep Selected"
 msgstr "Keep Selected"
 
@@ -1947,7 +1946,6 @@ msgid "Language:"
 msgstr "Language:"
 
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy
 msgid "Restart BleachBit for full effect."
 msgstr "Restart BleachBit for full effect."
 
@@ -2119,16 +2117,15 @@ msgid "Size"
 msgstr "Freed"
 
 #: ../bleachbit/GuiTreeModels.py
-#, fuzzy
 msgid "This option is protected. To bypass protection, enable expert mode."
 msgstr "This option is protected. To bypass protection, enable expert mode."
 
 #. TRANSLATORS: %(cleaner) may be Firefox, System, etc.
 #. %(option) may be cache, logs, cookies, etc.
 #: ../bleachbit/GuiTreeModels.py
-#, fuzzy, python-format
+#, python-format
 msgid "%(cleaner)s - %(option)s"
-msgstr "%(cleaner) - %(option)s"
+msgstr "%(cleaner)s - %(option)s"
 
 #: ../bleachbit/GuiWindow.py
 #, python-format
@@ -2136,11 +2133,11 @@ msgid "Resetting the configuration file because it is corrupt: %s"
 msgstr "Resetting the configuration file because it is corrupt: %s"
 
 #: ../bleachbit/GuiWindow.py
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "%(cleaner)s - %(option)s cannot be cleaned because expert mode is disabled."
 msgstr ""
-"%(cleaner) - %(option)s cannot be cleaned because expert mode is disabled."
+"%(cleaner)s - %(option)s cannot be cleaned because expert mode is disabled."
 
 #: ../bleachbit/GuiWindow.py
 msgid "You must select an operation"
@@ -2184,6 +2181,9 @@ msgid ""
 "the system. User-specific paths will refer to the administrator account, so "
 "to clean your profile, run BleachBit again as a standard user."
 msgstr ""
+"You elevated privileges using a different account to clean shared parts of "
+"the system. User-specific paths will refer to the administrator account, so "
+"to clean your profile, run BleachBit again as a standard user."
 
 #: ../bleachbit/GuiWindow.py
 msgid ""
@@ -2197,7 +2197,7 @@ msgstr ""
 
 #: ../bleachbit/GuiWindow.py
 msgid "This option requires expert mode. Enable it in Preferences."
-msgstr ""
+msgstr "This option requires expert mode. Enable it in Preferences."
 
 #. TRANSLATORS: Label in a context menu. 'Preview' is a verb.
 #. TRANSLATORS: This is the preview button on the main window.  It
@@ -2215,17 +2215,13 @@ msgstr "Clean"
 
 #. TRANSLATORS: Label in a context menu.
 #: ../bleachbit/GuiWindow.py
-#, fuzzy
-#| msgid "Cookies"
 msgid "Manage Cookies"
-msgstr "Cookies"
+msgstr "Manage Cookies"
 
 #. TRANSLATORS: this is the context menu
 #: ../bleachbit/GuiWindow.py
-#, fuzzy
-#| msgid "Manage cookies to keep"
 msgid "Manage custom paths"
-msgstr "Manage cookies to keep"
+msgstr "Manage custom paths"
 
 #: ../bleachbit/GuiWindow.py
 msgid "Preview files in the selected operations (without deleting any files)"
@@ -2265,6 +2261,8 @@ msgid ""
 "BleachBit detected leftover files from an interrupted disk wipe operation. "
 "Would you like to preview them with an option to delete them?"
 msgstr ""
+"BleachBit detected leftover files from an interrupted disk wipe operation. "
+"Would you like to preview them with an option to delete them?"
 
 #: ../bleachbit/GuiWindow.py
 msgid "Error when checking for updates: "
@@ -2392,6 +2390,11 @@ msgid ""
 "\n"
 "Are you sure you want to add this path?"
 msgstr ""
+"Warning: '%(path)s' may contain important files.\n"
+"\n"
+"Impact: %(files)d file(s), %(size)s\n"
+"\n"
+"Are you sure you want to add this path?"
 
 #. TRANSLATORS: Warning shown when user tries to add a protected path (no files found)
 #: ../bleachbit/ProtectedPath.py
@@ -2401,6 +2404,9 @@ msgid ""
 "\n"
 "Are you sure you want to add this path?"
 msgstr ""
+"Warning: '%(path)s' may contain important files.\n"
+"\n"
+"Are you sure you want to add this path?"
 
 #: ../bleachbit/RecognizeCleanerML.py
 msgid "Security warning"
@@ -2544,10 +2550,8 @@ msgid "{bytes:,} bytes and {inodes:,} inodes available to super-user"
 msgstr "{bytes:,} bytes and {inodes:,} inodes available to super-user"
 
 #: ../bleachbit/Wipe.py
-#, fuzzy
-#| msgid "Handled unknown error #0 while truncating file."
 msgid "Encountered unknown error #0 while truncating file."
-msgstr "Handled unknown error #0 while truncating file."
+msgstr "Encountered unknown error #0 while truncating file."
 
 #. TRANSLATORS: This indicates an error.  The special keyword
 #. %(operation)s will be replaced by 'firefox' or 'opera' or
@@ -2595,7 +2599,7 @@ msgstr "Please wait. Wiping empty space."
 
 #: ../bleachbit/Worker.py
 msgid "To stop this process, press the abort button on the toolbar and wait."
-msgstr ""
+msgstr "To stop this process, press the abort button on the toolbar and wait."
 
 #: ../bleachbit/Worker.py
 msgid ""
@@ -2603,6 +2607,9 @@ msgid ""
 "files may remain on the disk, and they may use all available space. To "
 "remove them, start BleachBit again."
 msgstr ""
+"If the application is force closed before the process is complete, large "
+"files may remain on the disk, and they may use all available space. To "
+"remove them, start BleachBit again."
 
 #. TRANSLATORS: %s is replaced with Firefox, System, etc.
 #: ../bleachbit/Worker.py
@@ -2681,10 +2688,8 @@ msgid "Shred Paths from Clipboard"
 msgstr "Shred Paths from Clipboard"
 
 #: ../share/app-menu.ui
-#, fuzzy
-#| msgid "_Wipe Free Space"
 msgid "_Wipe Empty Space"
-msgstr "_Wipe Free Space"
+msgstr "_Wipe Empty Space"
 
 #: ../share/app-menu.ui
 msgid "_Make Chaff"
