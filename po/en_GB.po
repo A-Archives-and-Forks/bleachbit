@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bleachbit\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: andrew@bleachbit.org\n"
 "POT-Creation-Date: 2026-02-23 09:52-0700\n"
-"PO-Revision-Date: 2026-02-28 06:27+0000\n"
-"Last-Translator: Andi Chandler <andi@gowling.com>\n"
+"PO-Revision-Date: 2026-03-01 09:09+0000\n"
+"Last-Translator: Alex Wood <github@alex-wood.org.uk>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "bleachbit/main/en_GB/>\n"
 "Language: en_GB\n"
@@ -1769,7 +1769,7 @@ msgstr "Make chaff"
 
 #: ../bleachbit/GuiChaff.py
 msgid "Make randomly-generated messages inspired by documents."
-msgstr "Make randomly-generated messages inspired by documents."
+msgstr "Make randomly generated messages inspired by documents."
 
 #. TRANSLATORS: Inspiration is a choice of documents from which random
 #. text will be generated.
@@ -1783,7 +1783,7 @@ msgstr "2600 Magazine"
 
 #: ../bleachbit/GuiChaff.py
 msgid "Hillary Clinton's emails"
-msgstr "Hillary Clinton's emails"
+msgstr "Hillary Clintons' emails"
 
 #: ../bleachbit/GuiChaff.py
 msgid "Number of files"
@@ -1811,7 +1811,7 @@ msgstr "Do not delete"
 #. chaff files.
 #: ../bleachbit/GuiChaff.py
 msgid "Make files"
-msgstr "Make files"
+msgstr "Create files"
 
 #. TRANSLATORS: The question shows in a dialog.
 #: ../bleachbit/GuiChaff.py
@@ -1840,44 +1840,47 @@ msgstr "Search:"
 #. TRANSLATORS: Placeholder text in the search entry in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Filter cookies..."
-msgstr ""
+msgstr "Filter cookies..."
 
 #. TRANSLATORS: Toggle button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Show Selected"
-msgstr ""
+msgstr "Show Selected"
 
 #. TRANSLATORS: Tooltip for the "Show Selected" toggle button.
 #: ../bleachbit/GuiCookie.py
 msgid "Only show cookies that are currently selected"
-msgstr ""
+msgstr "Only show cookies that are currently selected"
 
 #. TRANSLATORS: Column header in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #. TRANSLATORS: Button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
 msgid "Select All"
-msgstr ""
+msgstr "Select All"
 
 #. TRANSLATORS: Button label in the manage cookies dialog.
 #. The underscore indicates the accelerator key.
 #: ../bleachbit/GuiCookie.py
 msgid "Deselect All"
-msgstr ""
+msgstr "Deselect All"
 
 #. TRANSLATORS: Button label in the manage cookies dialog.
 #: ../bleachbit/GuiCookie.py
+#, fuzzy
 msgid "Keep Selected"
-msgstr ""
+msgstr "Keep Selected"
 
 #: ../bleachbit/GuiPreferences.py
 msgid ""
 "Expert mode enables advanced features and relaxes guardrails. Use extra "
 "caution in expert mode."
 msgstr ""
+"Expert mode enables advanced features and relaxes safety features. Use extra "
+"caution in expert mode."
 
 #: ../bleachbit/GuiPreferences.py ../share/app-menu.ui
 msgid "Preferences"
@@ -1897,21 +1900,19 @@ msgstr "Languages"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Keep list"
-msgstr ""
+msgstr "Keep list"
 
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy
-#| msgid "Dark mode"
 msgid "Expert mode"
-msgstr "Dark mode"
+msgstr "Expert mode"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Some GTK themes do not support both light and dark modes."
-msgstr ""
+msgstr "Some GTK themes do not support both light and dark modes."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Warning confirmations reset."
-msgstr ""
+msgstr "Warning confirmations reset."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Check periodically for software updates via the Internet"
@@ -1946,8 +1947,9 @@ msgid "Language:"
 msgstr "Language:"
 
 #: ../bleachbit/GuiPreferences.py
+#, fuzzy
 msgid "Restart BleachBit for full effect."
-msgstr ""
+msgstr "Restart BleachBit for full effect."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Hide irrelevant cleaners"
@@ -1970,10 +1972,8 @@ msgid "Exit after cleaning"
 msgstr "Exit after cleaning"
 
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy
-#| msgid "Delete confirmation"
 msgid "Reset warning confirmations"
-msgstr "Delete confirmation"
+msgstr "Reset warning confirmations"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Use IEC sizes (1 KiB = 1024 bytes) instead of SI (1 kB = 1000 bytes)"
@@ -2000,12 +2000,9 @@ msgid "Windows 10 theme"
 msgstr "Windows 10 theme"
 
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy
-#| msgid ""
-#| "Choose a writable folder for each drive for which to overwrite free space."
 msgid "Choose a writable folder for each drive for which to wipe empty space."
 msgstr ""
-"Choose a writable folder for each drive for which to overwrite free space."
+"Choose a writable folder for each drive to use when overwriting free space."
 
 #. TRANSLATORS: In the preferences dialog, this button adds a path to
 #. the list of paths
@@ -2023,7 +2020,7 @@ msgstr "Remove"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "All languages will be deleted except those checked."
-msgstr "All languages will be deleted except those ticked."
+msgstr "All languages will be deleted except those selected."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Preserve"
@@ -2038,10 +2035,8 @@ msgid "Name"
 msgstr "Name"
 
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy
-#| msgid "This path already exists in the whitelist."
 msgid "This path already exists in the keep list."
-msgstr "This path already exists in the whitelist."
+msgstr "This path already exists in the keep list."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "This path already exists in the custom list."
@@ -2049,11 +2044,11 @@ msgstr "This path already exists in the custom list."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "This path is protected. To bypass protection, enable expert mode."
-msgstr ""
+msgstr "This path is protected. To bypass protection, enable expert mode."
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Protected Path"
-msgstr ""
+msgstr "Protected Path"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "File"
@@ -2065,10 +2060,9 @@ msgstr "Folder"
 
 #. TRANSLATORS: %s is a file or folder path that was just added
 #: ../bleachbit/GuiPreferences.py
-#, fuzzy, python-format
-#| msgid "Access denied: %s"
+#, python-format
 msgid "Added: %s"
-msgstr "Access denied: %s"
+msgstr "Added: %s"
 
 #. TRANSLATORS: %s is a file or folder path that was just removed
 #: ../bleachbit/GuiPreferences.py
@@ -2078,7 +2072,7 @@ msgstr "Removed: %s"
 
 #: ../bleachbit/GuiPreferences.py
 msgid "Manage cookies to keep..."
-msgstr ""
+msgstr "Manage cookies to keep..."
 
 #. TRANSLATORS: "Paths" is used generically to refer to both files
 #. and folders
@@ -2122,18 +2116,19 @@ msgstr "Active"
 #. much space an option would clean or did clean
 #: ../bleachbit/GuiTreeModels.py
 msgid "Size"
-msgstr "Size"
+msgstr "Freed"
 
 #: ../bleachbit/GuiTreeModels.py
+#, fuzzy
 msgid "This option is protected. To bypass protection, enable expert mode."
-msgstr ""
+msgstr "This option is protected. To bypass protection, enable expert mode."
 
 #. TRANSLATORS: %(cleaner) may be Firefox, System, etc.
 #. %(option) may be cache, logs, cookies, etc.
 #: ../bleachbit/GuiTreeModels.py
-#, python-format
+#, fuzzy, python-format
 msgid "%(cleaner)s - %(option)s"
-msgstr "%(cleaner)s - %(option)s"
+msgstr "%(cleaner) - %(option)s"
 
 #: ../bleachbit/GuiWindow.py
 #, python-format
@@ -2141,10 +2136,11 @@ msgid "Resetting the configuration file because it is corrupt: %s"
 msgstr "Resetting the configuration file because it is corrupt: %s"
 
 #: ../bleachbit/GuiWindow.py
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "%(cleaner)s - %(option)s cannot be cleaned because expert mode is disabled."
 msgstr ""
+"%(cleaner) - %(option)s cannot be cleaned because expert mode is disabled."
 
 #: ../bleachbit/GuiWindow.py
 msgid "You must select an operation"
@@ -2158,7 +2154,7 @@ msgstr "Done."
 msgid ""
 "Access the application menu by clicking the hamburger icon on the title bar."
 msgstr ""
-"Access the application menu by clicking the hamburger icon on the title bar."
+"Access the application menu by clicking the beefburger icon on the title bar."
 
 #: ../bleachbit/GuiWindow.py
 msgid "Access the application menu by clicking the logo on the title bar."
