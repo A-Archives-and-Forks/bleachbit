@@ -42,11 +42,13 @@ else:
 logger = logging.getLogger(__name__)
 
 
-def whitelist(path):
-    """Return information that this file was whitelisted"""
+
+
+def ret_keep_list(path):
+    """Return information that this file matched by keep list"""
     ret = {
-        # TRANSLATORS: This is the label in the log indicating was
-        # skipped because it matches the whitelist
+        # TRANSLATORS: This is the label in the log indicating a path
+        # was skipped because it matches the keep list
         'label': _('Skip'),
         'n_deleted': 0,
         'n_special': 0,
@@ -72,7 +74,7 @@ class Delete:
     def execute(self, really_delete):
         """Make changes and return results"""
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
         try:
             size = FileUtilities.getsize(self.path)
@@ -86,8 +88,8 @@ class Delete:
             else:
                 raise
         ret = {
-            # TRANSLATORS: This is the label in the log indicating will be
-            # deleted (for previews) or was actually deleted
+            # TRANSLATORS: Label in the log indicating a path will be deleted
+            # (for previews) or was actually deleted (clean mode).
             'label': _('Delete'),
             'n_deleted': 1,
             'n_special': 0,
@@ -106,11 +108,13 @@ class Delete:
                 bleachbit.Windows.delete_locked_file(self.path)
 
                 if self.shred:
-
                     warnings.warn(
-                        _('At least one file was locked by another process, so its contents could not be overwritten. It will be marked for deletion upon system reboot.'))
-                    # TRANSLATORS: The file will be deleted when the
-                    # system reboots
+                        # TRANSLATORS: Warning message shown in the progress log.
+                        _('At least one file was locked by another process, '
+                          'so its contents could not be overwritten. '
+                          'It will be marked for deletion upon system reboot.'))
+                    # TRANSLATORS: Label in the log when the file will be deleted
+                    # when the system reboots. 'Mark' is a verb.
                     ret['label'] = _('Mark for deletion')
             else:
                 if not deleted:
@@ -156,7 +160,7 @@ class Function:
         """Execute the function and return results"""
 
         if self.path is not None and FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
@@ -238,13 +242,16 @@ class Ini:
     def execute(self, really_delete):
         """Make changes and return results"""
 
+        # Import here to avoid a circular import.
+        # pylint: disable=import-outside-toplevel
+        from bleachbit.Action import CLEAN_FILE_LABEL
+
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
-            # TRANSLATORS: Parts of this file will be deleted
-            'label': _('Clean file'),
+            'label': CLEAN_FILE_LABEL,
             'n_deleted': 0,
             'n_special': 1,
             'path': self.path,
@@ -273,12 +280,16 @@ class Json:
     def execute(self, really_delete):
         """Make changes and return results"""
 
+        # Import here to avoid a circular import.
+        # pylint: disable=import-outside-toplevel
+        from bleachbit.Action import CLEAN_FILE_LABEL
+
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
-            'label': _('Clean file'),
+            'label': CLEAN_FILE_LABEL,
             'n_deleted': 0,
             'n_special': 1,
             'path': self.path,
@@ -315,7 +326,7 @@ class Truncate(Delete):
         """Make changes and return results"""
 
         if FileUtilities.whitelisted(self.path):
-            yield whitelist(self.path)
+            yield ret_keep_list(self.path)
             return
 
         ret = {
@@ -363,6 +374,7 @@ class Winreg:
             return
 
         ret = {
+            # TRANSLATORS: A label of a command to delete a Windows registry key
             'label': _('Delete registry key'),
             'n_deleted': 0,
             'n_special': 1,

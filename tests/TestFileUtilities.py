@@ -1460,11 +1460,12 @@ State=AAAA/wA...
 
     def test_whitelisted(self):
         """Unit test for whitelisted()"""
+        # FIXME: finish renaming whitelist to keep list
         # setup
-        old_whitelist = options.get_whitelist_paths()
-        whitelist = [('file', '/home/foo'), ('folder', '/home/folder')]
-        options.set_whitelist_paths(whitelist)
-        self.assertEqual(set(whitelist), set(options.get_whitelist_paths()))
+        old_keep_list = options.get_whitelist_paths()
+        keep_list = [('file', '/home/foo'), ('folder', '/home/folder')]
+        options.set_whitelist_paths(keep_list)
+        self.assertEqual(set(keep_list), set(options.get_whitelist_paths()))
 
         # test
         self.assertFalse(whitelisted(''))
@@ -1482,9 +1483,9 @@ State=AAAA/wA...
         self.assertFalse(whitelisted('/home/folder2'))
 
         if 'nt' == os.name:
-            whitelist = [('folder', 'D:\\'), (
+            keep_list = [('folder', 'D:\\'), (
                 'file', 'c:\\windows\\foo.log'), ('folder', 'e:\\users')]
-            options.set_whitelist_paths(whitelist)
+            options.set_whitelist_paths(keep_list)
             self.assertTrue(whitelisted('e:\\users'))
             self.assertTrue(whitelisted('e:\\users\\'))
             self.assertTrue(whitelisted('e:\\users\\foo.log'))
@@ -1509,16 +1510,16 @@ State=AAAA/wA...
         self.assertFalse(whitelisted('/home/folder/file'))
 
         # clean up
-        options.set_whitelist_paths(old_whitelist)
+        options.set_whitelist_paths(old_keep_list)
         self.assertEqual(
-            set(old_whitelist), set(options.get_whitelist_paths()))
+            set(old_keep_list), set(options.get_whitelist_paths()))
 
     @common.skipIfWindows
     def test_whitelisted_posix_symlink(self):
         """Symlink test for whitelisted_posix()"""
         # setup
-        old_whitelist = options.get_whitelist_paths()
-        tmpdir = self.mkdir('bleachbit-whitelist')
+        old_keep_list = options.get_whitelist_paths()
+        tmpdir = self.mkdir('bleachbit-keep-list')
         realpath = self.write_file('real')
         linkpath = os.path.join(tmpdir, 'link')
         os.symlink(realpath, linkpath)
@@ -1526,36 +1527,36 @@ State=AAAA/wA...
         self.assertExists(linkpath)
 
         # test 1: the real path is whitelisted
-        whitelist = [('file', realpath)]
-        options.set_whitelist_paths(whitelist)
+        keep_list1 = [('file', realpath)]
+        options.set_whitelist_paths(keep_list1)
         self.assertFalse(whitelisted(tmpdir))
         self.assertTrue(whitelisted(realpath))
         self.assertTrue(whitelisted(linkpath))
 
         # test 2: the link is whitelisted
-        whitelist = [('file', linkpath)]
-        options.set_whitelist_paths(whitelist)
+        keep_list2 = [('file', linkpath)]
+        options.set_whitelist_paths(keep_list2)
         self.assertFalse(whitelisted(tmpdir))
         self.assertFalse(whitelisted(realpath))
         self.assertTrue(whitelisted(linkpath))
 
-        options.set_whitelist_paths(old_whitelist)
+        options.set_whitelist_paths(old_keep_list)
 
     def test_whitelisted_speed(self):
         """Benchmark the speed of whitelisted()
 
         It is called frequently, so the speed is important."""
         d = '/usr/bin'
-        whitelist = [('file', '/home/foo'), ('folder', '/home/folder')]
+        keep_list = [('file', '/home/foo'), ('folder', '/home/folder')]
         if 'nt' == os.name:
             d = os.path.expandvars(r'%windir%\system32')
-            whitelist = [('file', r'c:\filename'), ('folder', r'c:\\folder')]
+            keep_list = [('file', r'c:\filename'), ('folder', r'c:\\folder')]
         reps = 20
         paths = [p for p in children_in_directory(d, True)]
         paths = paths[:1000]  # truncate
         self.assertGreater(len(paths), 10)
-        old_whitelist = options.get_whitelist_paths()
-        options.set_whitelist_paths(whitelist)
+        old_keep_list = options.get_whitelist_paths()
+        options.set_whitelist_paths(keep_list)
 
         t0 = time.time()
         for _i in range(0, reps):
@@ -1565,4 +1566,4 @@ State=AAAA/wA...
         logger.info('whitelisted() with %d repetitions and %d paths took %g seconds',
                     reps, len(paths), t1 - t0)
 
-        options.set_whitelist_paths(old_whitelist)
+        options.set_whitelist_paths(old_keep_list)

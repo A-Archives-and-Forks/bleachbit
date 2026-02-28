@@ -35,6 +35,15 @@ if os.name == 'nt':
 require_gtk()
 
 
+# TRANSLATORS: Label for the Cancel button in several dialog windows:
+# file chooser, folder choose, delete confirmation, and warning dialogs.
+# The underscore indicates the accelerator key.
+CANCEL_BUTTON_LABEL = _("_Cancel")
+# TRANSLATORS: Label for the Delete button in the file choose dialog
+# and delete confirmation dialog.
+DELETE_BUTTON_LABEL = _("_Delete")
+
+
 def browse_folder(parent, title, multiple, stock_button):
     """Ask the user to select a folder.  Return the full path or None."""
 
@@ -46,7 +55,7 @@ def browse_folder(parent, title, multiple, stock_button):
     chooser = Gtk.FileChooserDialog(transient_for=parent,
                                     title=title,
                                     action=Gtk.FileChooserAction.SELECT_FOLDER)
-    chooser.add_buttons(_("_Cancel"), Gtk.ResponseType.CANCEL,
+    chooser.add_buttons(CANCEL_BUTTON_LABEL, Gtk.ResponseType.CANCEL,
                         stock_button, Gtk.ResponseType.OK)
     chooser.set_default_response(Gtk.ResponseType.OK)
     chooser.set_select_multiple(multiple)
@@ -73,7 +82,8 @@ def browse_file(parent, title):
     chooser = Gtk.FileChooserDialog(title=title,
                                     transient_for=parent,
                                     action=Gtk.FileChooserAction.OPEN)
-    chooser.add_buttons(_("_Cancel"), Gtk.ResponseType.CANCEL,
+    chooser.add_buttons(CANCEL_BUTTON_LABEL, Gtk.ResponseType.CANCEL,
+                        # TRANSLATORS: This is a label for the Open button in a file chooser dialog.
                         _("_Open"), Gtk.ResponseType.OK)
     chooser.set_default_response(Gtk.ResponseType.OK)
     chooser.set_current_folder(os.path.expanduser('~'))
@@ -97,8 +107,8 @@ def browse_files(parent, title):
     chooser = Gtk.FileChooserDialog(title=title,
                                     transient_for=parent,
                                     action=Gtk.FileChooserAction.OPEN)
-    chooser.add_buttons(_("_Cancel"), Gtk.ResponseType.CANCEL,
-                        _("_Delete"), Gtk.ResponseType.OK)
+    chooser.add_buttons(CANCEL_BUTTON_LABEL, Gtk.ResponseType.CANCEL,
+                        DELETE_BUTTON_LABEL, Gtk.ResponseType.OK)
     chooser.set_default_response(Gtk.ResponseType.OK)
     chooser.set_select_multiple(True)
     chooser.set_current_folder(os.path.expanduser('~'))
@@ -115,6 +125,7 @@ def browse_files(parent, title):
 
 def delete_confirmation_dialog(parent, mention_preview, shred_settings=False):
     """Return boolean whether OK to delete files."""
+    # TRANSLATORS: Title of the delete confirmation dialog.
     dialog = Gtk.Dialog(title=_("Delete confirmation"), transient_for=parent,
                         modal=True,
                         destroy_with_parent=True)
@@ -124,22 +135,34 @@ def delete_confirmation_dialog(parent, mention_preview, shred_settings=False):
                    homogeneous=False, spacing=10)
 
     if shred_settings:
-        notice_text = _("This function deletes all BleachBit settings and then quits the application. Use this to hide your use of BleachBit or to reset its settings. The next time you start BleachBit, the settings will initialize to default values.")
+        # TRANSLATORS: This message appears in a dialog window when the user
+        # chooses to shred settings and quit.
+        notice_text = _("This function deletes all BleachBit settings and then quits the "
+                        "application. Use this to hide your use of BleachBit or to reset its "
+                        "settings. The next time you start BleachBit, the settings will "
+                        "initialize to default values.")
         notice = Gtk.Label(label=notice_text)
         notice.set_line_wrap(True)
         vbox.pack_start(notice, False, True, 0)
 
     if mention_preview:
-        question_text = _(
-            "Are you sure you want to permanently delete files according to the selected operations?  The actual files that will be deleted may have changed since you ran the preview.")
+        # TRANSLATORS: This message appears in a dialog window when the user
+        # asks the user to confirm deleting files when a preview was run.
+        question_text = _("Are you sure you want to permanently delete files "
+                          "according to the selected operations?  The actual files that will be "
+                          "deleted may have changed since you ran the preview.")
     else:
-        question_text = _(
-            "Are you sure you want to permanently delete these files?")
+        # TRANSLATORS: This message appears in a dialog window when the user
+        # asks the user to confirm deleting files when no preview was run.
+        question_text = _("Are you sure you want to permanently delete "
+                          "these files?")
     question = Gtk.Label(label=question_text)
     question.set_line_wrap(True)
     vbox.pack_start(question, False, True, 0)
 
     if options.get('expert_mode'):
+        # TRANSLATORS: Check button shown in the confirm delete dialog.
+        # If unchecked, then it will not confirm next time.
         cb_popup = Gtk.CheckButton(label=_("Confirm before delete"))
         cb_popup.set_active(options.get('delete_confirmation'))
         vbox.pack_start(cb_popup, False, True, 0)
@@ -147,8 +170,8 @@ def delete_confirmation_dialog(parent, mention_preview, shred_settings=False):
     dialog.get_content_area().pack_start(vbox, False, True, 0)
     dialog.get_content_area().set_spacing(10)
 
-    dialog.add_button(_('_Delete'), Gtk.ResponseType.ACCEPT)
-    dialog.add_button(_('_Cancel'), Gtk.ResponseType.CANCEL)
+    dialog.add_button(DELETE_BUTTON_LABEL, Gtk.ResponseType.ACCEPT)
+    dialog.add_button(CANCEL_BUTTON_LABEL, Gtk.ResponseType.CANCEL)
     dialog.set_default_response(Gtk.ResponseType.CANCEL)
 
     dialog.show_all()
@@ -164,6 +187,8 @@ def warning_confirm_dialog(parent, option_name, warning_text, show_checkbox=True
 
     Returns tuple (confirmed: bool, remember_choice: bool).
     """
+    # TRANSLATORS: Title of a warning dialog. %(option)s is the name
+    # of the option being enabled (e.g. "shred files").
     dialog = Gtk.Dialog(title=_('Enable %(option)s') % {'option': option_name},
                         transient_for=parent,
                         modal=True,
@@ -178,13 +203,18 @@ def warning_confirm_dialog(parent, option_name, warning_text, show_checkbox=True
     content.pack_start(warning_label, False, False, 0)
 
     remember_cb = Gtk.CheckButton(
+        # TRANSLATORS: Check button label. %(option)s is the name of
+        # the option being enabled (e.g. "shred files").
         label=_('Remember my choice for %(option)s') % {'option': option_name})
     remember_cb.set_halign(Gtk.Align.START)
     if show_checkbox:
         content.pack_start(remember_cb, False, False, 0)
 
-    cancel_button = dialog.add_button(_('_Cancel'), Gtk.ResponseType.CANCEL)
-    enable_button = dialog.add_button(_("_Enable anyway"), Gtk.ResponseType.OK)
+    cancel_button = dialog.add_button(
+        CANCEL_BUTTON_LABEL, Gtk.ResponseType.CANCEL)
+    # TRANSLATORS: Button label in a warning dialog to confirm enabling an option.
+    # The underscore is the accelerator key.
+    enable_button = dialog.add_button(_('_Enable anyway'), Gtk.ResponseType.OK)
     enable_button.get_style_context().add_class('destructive-action')
     dialog.set_default_response(Gtk.ResponseType.CANCEL)
     cancel_button.grab_focus()
@@ -227,8 +257,10 @@ def open_url(url, parent_window=None, prompt=True):
     """Open an HTTP URL.  Try to run as non-root."""
     # drop privileges so the web browser is running as a normal process
     if os.name == 'posix' and os.getuid() == 0:
-        msg = _(
-            "Because you are running as root, please manually open this link in a web browser:\n%s") % url
+        # TRANSLATORS: This is an error message shown to root users.
+        # %s expands to a web URL.
+        msg = _("Because you are running as root, please manually open "
+                "this link in a web browser:\n%s") % url
         message_dialog(None, msg, Gtk.MessageType.INFO)
         return
     if prompt:
@@ -239,12 +271,14 @@ def open_url(url, parent_window=None, prompt=True):
             host = url
         else:
             host = ret.group(2)
-        # TRANSLATORS: %s expands to www.bleachbit.org or similar
+        # TRANSLATORS: The question appears in a confirmation dialog.
+        # %s expands to www.bleachbit.org or similar
         msg = _("Open web browser to %s?") % host
         resp = message_dialog(parent_window,
                               msg,
                               Gtk.MessageType.QUESTION,
                               Gtk.ButtonsType.OK_CANCEL,
+                              # TRANSLATORS: Title of a confirmation dialog.
                               _('Confirm'))
         if Gtk.ResponseType.OK != resp:
             return

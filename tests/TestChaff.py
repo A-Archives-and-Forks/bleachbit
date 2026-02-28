@@ -51,7 +51,8 @@ class ChaffTestCase(common.BleachbitTestCase):
         for _i in ('download', 'already downloaded'):
             ret = download_models(models_dir=models_dir)
             self.assertIsInstance(ret, bool)
-            self.assertTrue(ret)
+            self.assertTrue(
+                ret, "download_models() return False, meaning a download error occurred")
 
         self.assertExists(con_path)
         self.assertExists(sub_path)
@@ -90,7 +91,8 @@ class ChaffTestCase(common.BleachbitTestCase):
                 return True
         mock_download.side_effect = succeed_on_second
         ret = download_models(models_dir=tmp_dir)
-        self.assertTrue(ret)
+        self.assertTrue(
+            ret, "download_models() return False, meaning a download error occurred")
         self.assertEqual(mock_download.call_count, 6)
 
         # Test when both primary and secondary download mirrors will fail.
@@ -98,7 +100,8 @@ class ChaffTestCase(common.BleachbitTestCase):
         mock_download.side_effect = None
         mock_download.return_value = False
         ret = download_models(models_dir=tmp_dir)
-        self.assertFalse(ret)
+        self.assertFalse(
+            ret, "download_models() should return False when any download fails")
         self.assertEqual(mock_download.call_count, 2)
 
         rmtree(tmp_dir)
@@ -107,10 +110,12 @@ class ChaffTestCase(common.BleachbitTestCase):
         """Test for function have_models()"""
         download_models()
         rc = have_models()
-        self.assertTrue(rc)
+        self.assertTrue(
+            rc, "have_models() should return True when models are present")
         self.assertIsInstance(rc, bool)
         for basename in MODEL_BASENAMES:
             fn = os.path.join(DEFAULT_MODELS_DIR, basename)
             self.assertExists(fn)
             os.remove(fn)
-        self.assertFalse(have_models())
+        self.assertFalse(
+            have_models(), "have_models() should return False when any model is missing")

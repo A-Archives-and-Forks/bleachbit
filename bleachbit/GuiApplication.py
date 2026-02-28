@@ -125,6 +125,7 @@ class Bleachbit(Gtk.Application):
         """Callback for shredding a file"""
 
         # get list of files
+        # TRANSLATORS: Title of a file chooser dialog.
         paths = GuiBasic.browse_files(self._window, _("Choose files to shred"))
         if not paths:
             return
@@ -133,10 +134,14 @@ class Bleachbit(Gtk.Application):
     def cb_shred_folder(self, action, param):
         """Callback for shredding a folder"""
 
+        # TRANSLATORS: Title of a folder chooser dialog.
+        title = _("Choose folder to shred")
+        # TRANSLATORS: Button label in a folder chooser dialog.
+        button_label = _('_Delete')
         paths = GuiBasic.browse_folder(self._window,
-                                       _("Choose folder to shred"),
+                                       title,
                                        multiple=True,
-                                       stock_button=_('_Delete'))
+                                       stock_button=button_label)
         if not paths:
             return
         GUI.shred_paths(self._window, paths)
@@ -146,7 +151,7 @@ class Bleachbit(Gtk.Application):
         clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
         clipboard.request_targets(self.cb_clipboard_uri_received)
 
-    def cb_clipboard_uri_received(self, clipboard, targets, data):
+    def cb_clipboard_uri_received(self, clipboard, targets, _data):
         """Callback for when URIs are received from clipboard
 
         With GTK 3.18.9 on Windows, there was no text/uri-list in targets,
@@ -154,6 +159,8 @@ class Bleachbit(Gtk.Application):
         get_uris().
         """
         shred_paths = None
+        # TRANSLATORS: Warning log message when attempting to paste files/folders to shred.
+        not_found_msg = _('No paths found in clipboard.')
         if 'nt' == os.name and Gdk.atom_intern_static_string('FileNameW') in targets:
             # Windows
             # Use non-GTK+ functions because because GTK+ 2 does not work.
@@ -163,12 +170,15 @@ class Bleachbit(Gtk.Application):
             shred_uris = clipboard.wait_for_contents(
                 Gdk.atom_intern_static_string('text/uri-list')).get_uris()
             shred_paths = FileUtilities.uris_to_paths(shred_uris)
-        else:
-            logger.warning(_('No paths found in clipboard.'))
+        elif Gdk.atom_intern_static_string('text/plain') in targets:
+            # Plain text pasted from a text editor
+            text = clipboard.wait_for_text()
+            if text:
+                shred_paths = [p.strip() for p in text.splitlines() if p.strip()]
         if shred_paths:
             GUI.shred_paths(self._window, shred_paths)
         else:
-            logger.warning(_('No paths found in clipboard.'))
+            logger.warning(not_found_msg)
 
     def cb_shred_quit(self, action, param):
         """Shred settings (for privacy reasons) and quit"""
@@ -202,9 +212,15 @@ class Bleachbit(Gtk.Application):
 
     def cb_wipe_empty_space(self, action, param):
         """callback to wipe empty space in arbitrary folder"""
+        # TRANSLATORS: Title of a folder chooser dialog.
+        title = _("Choose a folder")
+        # TRANSLATORS: Button label in a folder chooser dialog.
+        # Underscore is for accelerator key.
+        button_label = _('_OK')
         path = GuiBasic.browse_folder(self._window,
-                                      _("Choose a folder"),
-                                      multiple=False, stock_button=_('_OK'))
+                                      title,
+                                      multiple=False,
+                                      stock_button=button_label)
         if not path:
             # user cancelled
             return
@@ -227,6 +243,7 @@ class Bleachbit(Gtk.Application):
         GUI.update_log_level(self._window)
 
     def get_about_dialog(self):
+        # TRANSLATORS: Title of the 'About' dialog.
         dialog = Gtk.AboutDialog(comments=_("Program to clean unnecessary files"),
                                  copyright=bleachbit.APP_COPYRIGHT,
                                  program_name=APP_NAME,
@@ -237,8 +254,10 @@ class Bleachbit(Gtk.Application):
             with open(bleachbit.license_filename) as f_license:
                 dialog.set_license(f_license.read())
         except (IOError, TypeError):
-            dialog.set_license(
-                _("GNU General Public License version 3 or later.\nSee https://www.gnu.org/licenses/gpl-3.0.txt"))
+            # TRANSLATORS: License text shown in the 'About' dialog.
+            license_msg = _("GNU General Public License version 3 or later.\n"
+                            "See https://www.gnu.org/licenses/gpl-3.0.txt")
+            dialog.set_license(license_msg)
         # TRANSLATORS: Maintain the names of translators here.
         # Launchpad does this automatically for translations
         # typed in Launchpad. This is a special string shown
@@ -269,7 +288,9 @@ class Bleachbit(Gtk.Application):
 
     def get_system_information_dialog(self):
         """Show system information dialog"""
-        dialog = Gtk.Dialog(title=_("System information"), transient_for=self._window)
+        # TRANSLATORS: Title of the system information dialog.
+        dialog = Gtk.Dialog(title=_("System information"),
+                            transient_for=self._window)
         dialog.set_default_size(600, 400)
         txtbuffer = Gtk.TextBuffer()
         from bleachbit import SystemInformation

@@ -625,8 +625,8 @@ def delete_unnecessary():
 def delete_icons():
     """Delete unused PNG/SVG icons to reduce size"""
     logger.info('Deleting unused PNG/SVG icons')
-    # This whitelist comes from analyze_process_monitor_events.py
-    icon_whitelist = [
+    # This keep list comes from analyze_process_monitor_events.py
+    icon_keep_list = [
         'edit-clear-all.png',
         'edit-delete.png',
         'edit-find.png',
@@ -642,10 +642,10 @@ def delete_icons():
     ]
     strip_list = recursive_glob(r'dist\share\icons', ['*.png', '*.svg'])
     for f in strip_list:
-        if os.path.basename(f) not in icon_whitelist:
+        if os.path.basename(f) not in icon_keep_list:
             os.remove(f)
         else:
-            logger.info('keeping whitelisted icon: %s', f)
+            logger.info('keeping protected icon: %s', f)
 
 
 def remove_empty_dirs(root):
@@ -682,9 +682,9 @@ def strip():
         return
     logger.info('Stripping executables')
     strip_list = recursive_glob('dist', ['*.dll', '*.pyd'])
-    strip_whitelist = ['_sqlite3.dll']
+    strip_keep_list = ['_sqlite3.dll']
     strip_files_str = [f for f in strip_list if os.path.basename(
-        f) not in strip_whitelist]
+        f) not in strip_keep_list]
     # Process each file individually in case it is locked. See
     # https://github.com/bleachbit/bleachbit/issues/690
     for strip_file in strip_files_str:

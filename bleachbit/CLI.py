@@ -124,9 +124,12 @@ def args_to_operations(args, preset, all_but_warning, excludes=None):
             return 'empty_space'
         return oid
 
+    # TRANSLATORS: Error shown on CLI, and %s is the name of a cleaning action
+    not_valid_cleaner_msg = _("not a valid cleaner: %s")
+
     for arg in positive_args:
         if 2 != len(arg.split('.')):
-            logger.warning(_("not a valid cleaner: %s"), arg)
+            logger.warning(not_valid_cleaner_msg, arg)
             continue
         (cleaner_id, option_id) = arg.split('.')
         # enable all options (for example, firefox.*)
@@ -150,12 +153,14 @@ def args_to_operations(args, preset, all_but_warning, excludes=None):
 
     for arg in excludes:
         if '*' in arg or '?' in arg:
-            logger.error(
-                _("Wildcard characters are not allowed in --except: %s"), arg)
+            # TRANSLATORS: Error shown on CLI, and %s is the name of a cleaning action
+            wildcard_msg = _("Wildcard characters are not allowed "
+                             "in --except: %s")
+            logger.error(wildcard_msg, arg)
             # Exit to avoid over-cleaning.
             sys.exit(1)
         if 2 != len(arg.split('.')):
-            logger.error(_("not a valid cleaner: %s"), arg)
+            logger.error(not_valid_msg, arg)
             # Exit to avoid over-cleaning.
             sys.exit(1)
         (cleaner_id, option_id) = arg.split('.')
@@ -190,36 +195,59 @@ def parse_cmd_line(argv=None):
     # https://www.bleachbit.org/documentation/command-line
     usage = _("usage: %prog [options] cleaner.option1 [cleaner.option2 ...]")
     parser = optparse.OptionParser(usage)
+
     parser.add_option("-l", "--list-cleaners", action="store_true",
+                      # TRANSLATORS: Help for the --list-cleaners command on the CLI,
+                      # and 'list' is a verb
                       help=_("list cleaners"))
     parser.add_option("-p", "--preview", action="store_true",
+                      # TRANSLATORS: Help for the --preview command on the CLI,
+                      # and 'preview' is a verb
                       help=_("preview files to be deleted and other changes"))
     parser.add_option("-c", "--clean", action="store_true",
-                      # TRANSLATORS: predefined cleaners are for applications, such as Firefox and Flash.
-                      # This is different than cleaning an arbitrary file, such as a
-                      # spreadsheet on the desktop.
+                      # TRANSLATORS: Help for the --clean command on the CLI
                       help=_("run cleaners to delete files and make other permanent changes"))
     parser.add_option("-s", "--shred", action="store_true",
+                      # TRANSLATORS: Help for the --shred command on the CLI,
+                      # and 'shred' is a verb
                       help=_("shred specific files or folders"))
     parser.add_option("-w", "--wipe-empty-space", "--wipe-free-space",
                       action="store_true", dest="wipe_empty_space",
+                      # TRANSLATORS: Help for the --wipe-empty-space
+                      # command on the CLI, and 'wipe' is a verb
                       help=_("wipe empty space in the given paths"))
-    parser.add_option('-o', '--overwrite', action='store_true',
-                      help=_('overwrite files to hide contents'))
+    parser.add_option("-o", "--overwrite", action="store_true",
+                      # TRANSLATORS: Help for the --overwrite option on the CLI,
+                      # and 'overwrite' is a verb
+                      help=_("overwrite files to hide contents"))
     parser.add_option("--gui", action="store_true",
+                      # TRANSLATORS: Help for the --gui option on the CLI,
+                      # and 'launch' is a verb
                       help=_("launch the graphical interface"))
     parser.add_option("--preset", action="store_true",
+                      # TRANSLATORS: Help for the --preset option on the CLI,
+                      # and 'use' is a verb, referring to enabling options set earlier.
                       help=_("use options set in the graphical interface"))
     parser.add_option("--all-but-warning", action="store_true",
+                      # TRANSLATORS: Help for the --all-but-warning option on the CLI,
+                      # and 'enable' is a verb.
                       help=_("enable all options that do not have a warning"))
     parser.add_option("--except", dest="excludes", action="append", default=[],
+                      # TRANSLATORS: Help for the --except option on the CLI,
+                      # and 'exclude' is a verb.
                       help=_("exclude cleaner options (can be repeated, comma-separated)"))
-    parser.add_option(
-        '--debug', help=_("set log level to verbose"), action="store_true")
+
+    parser.add_option('--debug',
+                      # TRANSLATORS: Help for the --debug option on the CLI,
+                      # and 'set' is a verb.
+                      help=_("set log level to verbose"), action="store_true")
+    # TRANSLATORS: Help for --debug-log option on the CLI.
     parser.add_option('--debug-log', help=_("log debug messages to file"))
     parser.add_option("--sysinfo", action="store_true",
+                      # TRANSLATORS: Help for --sysinfo option on the CLI.
                       help=_("show system information"))
     parser.add_option("-v", "--version", action="store_true",
+                      # TRANSLATORS: Help for --version option on the CLI.
                       help=_("output version information and exit"))
     parser.add_option('--pot', action='store_true',
                       help=optparse.SUPPRESS_HELP)
@@ -237,11 +265,13 @@ def parse_cmd_line(argv=None):
                       help=optparse.SUPPRESS_HELP)
 
     if 'nt' == os.name:
+        # TRANSLATORS: Help for --no-uac option on the CLI.
         uac_help = _("do not prompt for administrator privileges")
         parser.add_option("--no-uac", action="store_true", help=uac_help)
 
         parser.add_option('--uac-sid-token', help=optparse.SUPPRESS_HELP)
         parser.add_option("--update-winapp2", action="store_true",
+                          # TRANSLATORS: Help for --update-winapp2 command on the CLI.
                           help=_("update winapp2.ini, if a new version is available"))
 
     # added for testing py2exe build
@@ -283,6 +313,7 @@ def process_cmd_line():
     cmd_count = sum(x is True for x in cmd_list)
     if cmd_count > 1:
         logger.error(
+            # TRANSLATORS: Error message shown on CLI.
             _('Specify only one of these commands: --list-cleaners, --wipe-empty-space, --preview, --clean, --shred'))
         sys.exit(1)
 
@@ -310,6 +341,7 @@ There is NO WARRANTY, to the extent permitted by law.""" % APP_VERSION)
         sys.exit(0)
     if 'nt' == os.name and options.update_winapp2:
         from bleachbit import Update
+        # TRANSLATORS: Log message on the CLI.
         logger.info(_("Checking online for updates to winapp2.ini"))
         Update.check_updates(False, True,
                              lambda x: sys.stdout.write("%s\n" % x),
@@ -325,10 +357,13 @@ There is NO WARRANTY, to the extent permitted by law.""" % APP_VERSION)
         sys.exit(0)
     if options.wipe_empty_space:
         if len(args) < 1:
+            # TRANSLATORS: Error message on the CLI.
             logger.error(_("No directories given for --wipe-empty-space"))
             sys.exit(1)
+        # TRANSLATORS: Log message on the CLI.
         logger.info(_("Wiping empty space can take a long time."))
         for wipe_path in args:
+            # TRANSLATORS: Shows activity in the CLI, and %s is the path to the directory.
             logger.info(_("Wipe empty space in %s"), wipe_path)
             import bleachbit.FileUtilities
             for _ret in bleachbit.FileUtilities.wipe_path(wipe_path):
@@ -338,11 +373,13 @@ There is NO WARRANTY, to the extent permitted by law.""" % APP_VERSION)
         operations = args_to_operations(
             args, options.preset, options.all_but_warning, excludes)
         if not operations:
+            # TRANSLATORS: Error message on the CLI.
             logger.error(_("No operations selected. Specify cleaner options."))
             sys.exit(1)
     if options.overwrite:
         if not options.clean or options.shred:
             logger.warning(
+                # TRANSLATORS: '--overwrite' and '--clean' are command line options
                 _("--overwrite is intended only for use with --clean"))
         Options.options.set_override('shred', True)
     if options.clean or options.preview:

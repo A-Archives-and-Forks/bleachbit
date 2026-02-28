@@ -33,6 +33,10 @@ elif os.name not in ('posix', 'nt'):
 # a module-level variable for holding cleaners
 backends = {}
 
+# Putting the string here helps with translation.
+# TRANSLATORS: The description of what certain cleaning options do.
+DELETE_CACHE_DESCRIPTION = _("Delete the cache")
+
 
 class Cleaner:
 
@@ -162,11 +166,12 @@ class OpenOfficeOrg(Cleaner):
     def __init__(self):
         Cleaner.__init__(self)
         self.options = {}
-        self.add_option('cache', _('Cache'), _('Delete the cache'))
+        self.add_option('cache', _('Cache'), DELETE_CACHE_DESCRIPTION)
         self.add_option('recent_documents', _('Most recently used'), _(
             "Delete the list of recently used documents"))
         self.id = 'openofficeorg'
         self.name = 'OpenOffice.org'
+        # TRANSLATORS: The description of a cleaner.
         self.description = _("Office suite")
 
         # reference: http://katana.oooninja.com/w/editions_of_openoffice.org
@@ -252,7 +257,7 @@ class System(Cleaner):
             # http://standards.freedesktop.org/menu-spec/latest/index.html#introduction
             self.add_option('desktop_entry', _('Broken desktop files'), _(
                 'Delete broken application menu entries and file associations'))
-            self.add_option('cache', _('Cache'), _('Delete the cache'))
+            self.add_option('cache', _('Cache'), DELETE_CACHE_DESCRIPTION)
             # TRANSLATORS: Localizations are files supporting specific
             # languages, so applications appear in Spanish, etc.
             self.add_option('localizations', _('Localizations'), _(
@@ -286,16 +291,23 @@ class System(Cleaner):
             self.add_option('logs', _('Logs'), _('Delete the logs'))
             self.add_option(
                 'memory_dump', _('Memory dump'), _('Delete the file'))
-            self.add_option('muicache', 'MUICache', _('Delete the cache'))
-            # TRANSLATORS: Prefetch is Microsoft Windows jargon.
-            self.add_option('prefetch', _('Prefetch'), _('Delete the cache'))
+            self.add_option('muicache', 'MUICache', DELETE_CACHE_DESCRIPTION)
+            # TRANSLATORS: Name of cleaning option. 'Prefetch' is Microsoft Windows jargon.
+            self.add_option('prefetch', _('Prefetch'),
+                            DELETE_CACHE_DESCRIPTION)
             self.add_option(
                 'recycle_bin', _('Recycle bin'), _('Empty the recycle bin'))
-            # TRANSLATORS: 'Update' is a noun, and 'Update uninstallers' is an option to delete
-            # the uninstallers for software updates.
-            self.add_option('updates', _('Update uninstallers'), _(
-                'Delete uninstallers for Microsoft updates including hotfixes, service packs, and Internet Explorer updates'))
-            self.set_warning('updates', _('This option may prevent uninstalling some updates.'))
+            # TRANSLATORS: Name for cleaning option. 'Update' is an adjective to
+            # describe the kind of uninstallers.
+            updates_name = _('Update uninstallers')
+            # TRANSLATORS: Description of cleaning option.
+            updates_desc = _('Delete uninstallers for Microsoft updates including hotfixes, '
+                             'service packs, and Internet Explorer updates')
+            self.add_option('updates', updates_name, updates_desc)
+            # TRANSLATORS: Warning shown when selecting an option.
+            updates_warning = _('This option may prevent uninstalling '
+                                'some updates.')
+            self.set_warning('updates', updates_warning)
 
         #
         # options for GTK+
@@ -588,7 +600,7 @@ class System(Cleaner):
                 yield wu
 
     def init_whitelist(self):
-        """Initialize the whitelist only once for performance"""
+        """Initialize the keep list (formerly whitelist) only once for performance"""
         regexes = [
             '^/tmp/.X0-lock$',
             '^/tmp/.truecrypt_aux_mnt.*/(control|volume)$',
@@ -641,7 +653,7 @@ class System(Cleaner):
             self.regexes_compiled.append(re.compile(regex))
 
     def whitelisted(self, pathname):
-        """Return boolean whether file is whitelisted"""
+        """Return boolean whether file is keep listed (formerly whitelisted)"""
         if os.name == 'nt':
             # Whitelist is specific to POSIX
             return False
@@ -732,7 +744,7 @@ def create_wipe_empty_space_cleaner(path):
     display = _("Wipe empty space %s") % path
 
     def wipe_path_func():
-        yield from bleachbit.Wipe.wipe_path(path, idle=True)
+        yield from wipe_path(path, idle=True)
         yield 0
 
     class CustomWipeAction(Action.ActionProvider):

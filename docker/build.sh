@@ -52,6 +52,7 @@ USER_ID=$(id -u)
 GROUP_ID=$(id -g)
 IMAGE=""
 DOCKERFILE=""
+DOCKER_BUILD_CONTEXT="$DOCKER_DIR"
 
 case "$DISTRO" in
     debian)
@@ -73,6 +74,7 @@ case "$DISTRO" in
     py314-pytest)
         IMAGE=bleachbit-test:py314-pytest
         DOCKERFILE="$DOCKER_DIR/Dockerfile.py314-pytest"
+        DOCKER_BUILD_CONTEXT="$ROOT_DIR"
         ;;
     *)
         echo "ERROR: unsupported distro '$DISTRO'" >&2
@@ -95,8 +97,6 @@ fi
 ARTIFACT_DIR="$ARTIFACT_ROOT/$DISTRO"
 mkdir -p "$ARTIFACT_DIR"
 
-DOCKER_BUILD_CONTEXT="$DOCKER_DIR"
-
 echo "[docker] Building image $IMAGE from $(basename "$DOCKERFILE")" >&2
 docker build \
     --pull \
@@ -104,6 +104,7 @@ docker build \
     --build-arg HOME_IN_CONTAINER="$HOME_IN_CONTAINER" \
     --build-arg USER_ID="$USER_ID" \
     --build-arg GROUP_ID="$GROUP_ID" \
+    --progress=plain \
     -f "$DOCKERFILE" \
     -t "$IMAGE" \
     "$DOCKER_BUILD_CONTEXT"

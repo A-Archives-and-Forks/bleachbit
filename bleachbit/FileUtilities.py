@@ -470,11 +470,13 @@ def delete(path, shred=False, ignore_missing=False, allow_shred=True):
         return True
     elif os.path.isdir(path):
         delpath = path
+        # TRANSLATORS: Log message where %s is the pathname.
+        not_empty_msg = _("Directory is not empty: %s")
         if do_shred:
             if not is_dir_empty(path):
                 # Avoid renaming non-empty directory like
                 # https://github.com/bleachbit/bleachbit/issues/783
-                logger.info(_("Directory is not empty: %s"), path)
+                logger.info(not_empty_msg, path)
                 return False
             delpath = wipe_name(path)
         try:
@@ -483,12 +485,14 @@ def delete(path, shred=False, ignore_missing=False, allow_shred=True):
             # [Errno 39] Directory not empty
             # https://bugs.launchpad.net/bleachbit/+bug/1012930
             if errno.ENOTEMPTY == e.errno:
-                logger.info(_("Directory is not empty: %s"), path)
+                logger.info(not_empty_msg, path)
                 return False
             elif errno.EBUSY == e.errno:
                 if os.name == 'posix' and os.path.ismount(path):
+                    # TRANSLATORS: Log message where %s is the pathname.
                     logger.info(_("Skipping mount point: %s"), path)
                 else:
+                    # TRANSLATORS: Log message where %s is the pathname.
                     logger.info(_("Device or resource is busy: %s"), path)
                 return False
             elif os.name == 'nt' and errno.EACCES == e.errno:
@@ -505,7 +509,7 @@ def delete(path, shred=False, ignore_missing=False, allow_shred=True):
             # Error 145 may happen if the files are scheduled for deletion
             # during reboot.
             if 145 == e.winerror:
-                logger.info(_("Directory is not empty: %s"), path)
+                logger.info(not_empty_msg, path)
                 return False
             else:
                 raise
@@ -517,6 +521,7 @@ def delete(path, shred=False, ignore_missing=False, allow_shred=True):
         os.remove(path)
         return True
     else:
+        # TRANSLATORS: Log message where %s is the pathname.
         logger.info(_("Special file type cannot be deleted: %s"), path)
         return False
 
@@ -755,6 +760,7 @@ def guess_overwrite_paths():
         localtmp = os.path.expandvars('$TMP')
         if not os.path.exists(localtmp):
             logger.warning(
+                # TRANSLATORS: This is a warning log message. %s is the directory path.
                 _("The environment variable TMP refers to a directory that does not exist: %s"), localtmp)
             localtmp = None
         for drive in bleachbit.Windows.get_fixed_drives():

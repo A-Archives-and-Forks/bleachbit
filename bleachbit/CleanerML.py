@@ -207,6 +207,9 @@ class CleanerML:
             try:
                 self.handle_cleaner_option(option)
             except Exception:
+                # TRANSLATORS: Error message shown in the log.
+                # {cleaner_id} is the internal identifier of the cleaner.
+                # {option_xml} is the XML snippet that caused the error.
                 exc_msg = _(
                     "Error in handle_cleaner_option() for cleaner id = {cleaner_id}, option XML={option_xml}")
                 logger.exception(exc_msg.format(
@@ -365,10 +368,11 @@ def list_cleanerml_files(local_only=False):
             continue
         st = os.stat(pathname)
         if sys.platform != 'win32' and stat.S_IMODE(st[stat.ST_MODE]) & 2:
-            # TRANSLATORS: When BleachBit detects the file permissions are
-            # insecure, it will not load the cleaner as if it did not exist.
-            logger.warning(
-                _("Ignoring cleaner because it is world writable: %s"), pathname)
+            # TRANSLATORS: Warning printed to the log.
+            # %s expands to the path of the XML cleaner file that was skipped
+            warning_msg = _("Ignoring cleaner because it is "
+                "world writable: %s")
+            logger.warning(warning_msg, pathname)
             continue
         yield pathname
 
@@ -388,6 +392,8 @@ def load_cleaners(cb_progress=lambda x: None):
         try:
             xmlcleaner = CleanerML(pathname)
         except Exception:
+            # TRANSLATORS: Error message printed to the log.
+            # %s expands to the path of the XML cleaner file
             logger.exception(_("Error reading cleaner: %s"), pathname)
             continue
         cleaner = xmlcleaner.get_cleaner()

@@ -11,6 +11,7 @@ RUN apt-get update \
         build-essential \
         ca-certificates \
         cmake \
+        gettext \ # for tests.TestMakefile.MakefileTestCase.test_make_source
         gobject-introspection \
         gir1.2-gtk-3.0 \
         gir1.2-notify-0.7 \
@@ -28,17 +29,22 @@ RUN apt-get update \
         xvfb \
     && rm -rf /var/lib/apt/lists/*
 
+# for tests.TestUnix.UnixTestCase.test_localization_paths
 RUN sed -i 's/# \(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
-    && locale-gen
+    && sed -i 's/# \(de_DE.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
+    && sed -i 's/# \(fr_FR.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
+    && locale-gen \
+    && mkdir -p /usr/share/locale/de /usr/share/locale/fr
 
-RUN python -m pip install --no-cache-dir -U pip setuptools wheel
+# Update pip.
+# pip is the only preinstalled package.
+RUN python -m pip list && python -m pip install --no-cache-dir -U pip
+
+# Install new Python packages.
+COPY requirements.txt ./
 RUN python -m pip install --no-cache-dir \
-        chardet \
-        psutil \
-        requests \
-        pycairo \
-        PyGObject \
-        pytest
+        PyGObject pytest pytest-xdist \
+        -r requirements.txt
 
 ARG HOME_IN_CONTAINER=/home/user
 ARG USER_ID=1000

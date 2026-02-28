@@ -46,6 +46,12 @@ if os.name == 'nt':
 
 logger = logging.getLogger(__name__)
 
+# This string is used several times. Listing it here helps with translation.
+# TRANSLATORS: This is the name of a cleaning action. 'Clean' is a verb.
+# It shows in the log of actions that would be performed (preview mode) or
+# in the log of actions that were performed (clean mode).
+CLEAN_FILE_LABEL = _('Clean file')
+
 
 def has_glob(s):
     """Checks whether the string contains any glob characters"""
@@ -396,7 +402,7 @@ class ChromeAutofill(FileActionProvider):
             yield Command.Function(
                 path,
                 Special.delete_chrome_autofill,
-                _('Clean file'))
+                CLEAN_FILE_LABEL)
 
 
 class ChromeDatabases(FileActionProvider):
@@ -409,7 +415,7 @@ class ChromeDatabases(FileActionProvider):
             yield Command.Function(
                 path,
                 Special.delete_chrome_databases_db,
-                _('Clean file'))
+                CLEAN_FILE_LABEL)
 
 
 class ChromeFavicons(FileActionProvider):
@@ -422,7 +428,7 @@ class ChromeFavicons(FileActionProvider):
             yield Command.Function(
                 path,
                 Special.delete_chrome_favicons,
-                _('Clean file'))
+                CLEAN_FILE_LABEL)
 
 
 class ChromeHistory(FileActionProvider):
@@ -435,7 +441,7 @@ class ChromeHistory(FileActionProvider):
             yield Command.Function(
                 path,
                 Special.delete_chrome_history,
-                _('Clean file'))
+                CLEAN_FILE_LABEL)
 
 
 class ChromeKeywords(FileActionProvider):
@@ -448,7 +454,7 @@ class ChromeKeywords(FileActionProvider):
             yield Command.Function(
                 path,
                 Special.delete_chrome_keywords,
-                _('Clean file'))
+                CLEAN_FILE_LABEL)
 
 
 class Cookie(FileActionProvider):
@@ -489,6 +495,8 @@ class Cookie(FileActionProvider):
             yield Command.Function(
                 path,
                 delete_func,
+                # TRANSLATORS: This is the name of a cleaning action. 'Clean' is a verb.
+                # It shows in the log of actions performed.
                 _('Clean cookies'),
                 preview_func)
 
@@ -598,7 +606,7 @@ class MozillaUrlHistory(FileActionProvider):
         for path in self.get_paths():
             yield Command.Function(path,
                                    Special.delete_mozilla_url_history,
-                                   _('Clean file'))
+                                   CLEAN_FILE_LABEL)
 
 
 class MozillaFavicons(FileActionProvider):
@@ -610,7 +618,7 @@ class MozillaFavicons(FileActionProvider):
         for path in self.get_paths():
             yield Command.Function(path,
                                    Special.delete_mozilla_favicons,
-                                   _('Clean file'))
+                                   CLEAN_FILE_LABEL)
 
 
 class OfficeRegistryModifications(FileActionProvider):
@@ -623,7 +631,7 @@ class OfficeRegistryModifications(FileActionProvider):
             yield Command.Function(
                 path,
                 Special.delete_office_registrymodifications,
-                _('Clean'))
+                CLEAN_FILE_LABEL)
 
 
 class Process(ActionProvider):
@@ -655,6 +663,7 @@ class Process(ActionProvider):
                                args, rc, stdout, stderr)
             return 0
         yield Command.Function(path=None, func=run_process,
+                               # TRANSLATORS: %s is the command line to be executed
                                label=_("Run external command: %s") % self.cmd)
 
 
@@ -706,6 +715,7 @@ class WinShellChangeNotify(ActionProvider):
             None,
             # pylint: disable=possibly-used-before-assignment
             Windows.shell_change_notify,
+            # TRANSLATORS: This is the name of an action. 'Refresh' is a verb.
             _('Refresh Windows shell'))
 
 

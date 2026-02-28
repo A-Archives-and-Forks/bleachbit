@@ -46,7 +46,7 @@ DOMAIN_MATCHING_CASES = (
     ('example.com', '.example.com', True,
      'Domain cookie canonicalizes to base host'),
     ('example.com', 'shop.example.com', True,
-     'Subdomain should be preserved when base is allowlisted'),
+     'Subdomain should be preserved when base is keeplisted'),
     ('example.com', '.shop.example.com', True,
      'Firefox/Chromium store domain cookies with dots'),
     ('example.com', 'thisisanexample.com', False,
@@ -58,9 +58,9 @@ DOMAIN_MATCHING_CASES = (
     ('www.example.com', 'example.com', False,
      'Host-only cookies should not match parent domain'),
     ('.example.com', 'example.com', True,
-     'Leading dots in allowlist should be ignored'),
+     'Leading dots in keep list should be ignored'),
     ('.example.com', 'www.example.com', True,
-     'Leading dots in allowlist should match subdomains'),
+     'Leading dots in keep list should match subdomains'),
     ('.example.com', 'fooexample.com', False,
      'Canonical registrable domain mismatch'),
 )
@@ -211,7 +211,7 @@ class CookieTestCase(common.BleachbitTestCase):
         return path
 
     def test_delete_cookie_value_error(self):
-        """Empty allowlist should raise ValueError (API requires non-empty set)"""
+        """Empty keep list should raise ValueError (API requires non-empty set)"""
         path = self._create_chrome_cookies_db()
 
         # Get file hash before operation
@@ -220,9 +220,9 @@ class CookieTestCase(common.BleachbitTestCase):
         # Test scenarios that should raise ValueError
         scenarios = [
             # Scenario 1: Empty allowlist
-            (set(), "Empty allowlist should raise ValueError"),
+            (set(), "Empty keep list should raise ValueError"),
             # Scenario 2: None allowlist
-            (None, "None allowlist should raise ValueError"),
+            (None, "None keep list should raise ValueError"),
         ]
 
         for keep_list, description in scenarios:
@@ -235,7 +235,7 @@ class CookieTestCase(common.BleachbitTestCase):
                                  'Database file was modified')
 
     def test_delete_cookie_bad_file(self):
-        """Empty allowlist should raise ValueError (API requires non-empty set)"""
+        """Empty keep list should raise ValueError (API requires non-empty set)"""
         path_missing = os.path.join(self.temp_dir, 'nonexistent.db')
         path_non_sqlite = os.path.join(self.temp_dir, 'not_sqlite.txt')
         path_wrong_sqlite = os.path.join(self.temp_dir, 'wrong_sqlite.db')
@@ -269,11 +269,11 @@ class CookieTestCase(common.BleachbitTestCase):
                     self.assertEqual(original_hash, new_hash,
                                      'Database file was modified')
 
-    def test_delete_cookies_chrome_with_allowlist(self):
-        """Test selectively deleting Chrome cookies with allowlist"""
+    def test_delete_cookies_chrome_with_keeplist(self):
+        """Test selectively deleting Chrome cookies with keep list"""
         path = self._create_chrome_cookies_db()
 
-        # Test deletion with allowlist (keep google.com)
+        # Test deletion with keep list (keep google.com)
         keep_list = ['google.com']
         result = Cookie.delete_cookies(
             path, set(keep_list), really_delete=True)
@@ -285,7 +285,7 @@ class CookieTestCase(common.BleachbitTestCase):
         self.assertFalse(result['whole_file_deleted'])
         self.assertGreaterEqual(result['file_size_reduction'], 0)
 
-    def test_non_sqlite_file_with_allowlist_raises(self):
+    def test_non_sqlite_file_with_keeplist_raises(self):
         """Non-SQLite file should raise ValueError and not be deleted"""
         # First create a valid cookies db to get the path format right
         path = self._create_chrome_cookies_db()
@@ -300,7 +300,7 @@ class CookieTestCase(common.BleachbitTestCase):
 
         self.assertTrue(os.path.exists(path))
 
-    def test_sqlite_unknown_table_with_allowlist_raises(self):
+    def test_sqlite_unknown_table_with_keeplist_raises(self):
         """SQLite DB without known cookies table should raise ValueError"""
         path = os.path.join(self.temp_dir, 'unknown_table.db')
         conn = sqlite3.connect(path)
@@ -331,11 +331,11 @@ class CookieTestCase(common.BleachbitTestCase):
         # Verify database file was removed
         self.assertFalse(os.path.exists(path))
 
-    def test_delete_cookies_firefox_with_allowlist(self):
-        """Test selectively deleting Firefox cookies with allowlist"""
+    def test_delete_cookies_firefox_with_keeplist(self):
+        """Test selectively deleting Firefox cookies with keeplist"""
         path = self._create_firefox_cookies_db()
 
-        # Test deletion with whitelist (keep google.com)
+        # Test deletion with keep list
         keep_list = ['google.com']
         result = Cookie.delete_cookies(
             path, set(keep_list), really_delete=True)
@@ -429,7 +429,7 @@ class CookieTestCase(common.BleachbitTestCase):
         """Test previewing Chrome cookie deletion"""
         path = self._create_chrome_cookies_db()
 
-        # Test preview with allowlist
+        # Test preview with keep list
         keep_list = ['google.com']
         result = Cookie.delete_cookies(
             path, set(keep_list), really_delete=False)
@@ -448,8 +448,8 @@ class CookieTestCase(common.BleachbitTestCase):
 
         self.assertEqual(len(all_cookies), 3)  # All cookies still there
 
-    def test_allowlist_domain_matching_matrix(self):
-        """Table-driven coverage for allowlist domain semantics"""
+    def test_keeplist_domain_matching_matrix(self):
+        """Table-driven coverage for keep list domain semantics"""
         for selection, host_value, expect_keep, reason in DOMAIN_MATCHING_CASES:
             with self.subTest(selection=selection, host=host_value, reason=reason):
                 cookies = [(host_value, 'token')]
@@ -464,8 +464,8 @@ class CookieTestCase(common.BleachbitTestCase):
                     self.assertEqual(result['total_kept'], 0, reason)
                     self.assertEqual(result['total_deleted'], 1)
 
-    def test_preview_cookies_deletion_no_allowlist(self):
-        """Test previewing cookie deletion with no allowlist"""
+    def test_preview_cookies_deletion_no_keeplist(self):
+        """Test previewing cookie deletion with no keep list"""
         # Create test cookies
         cookies_data = [
             ('example.com', 'session_id'),
@@ -473,7 +473,7 @@ class CookieTestCase(common.BleachbitTestCase):
 
         path = self._create_chrome_cookies_db(cookies_data)
 
-        # Test preview with no allowlist (should preview whole file deletion)
+        # Test preview with no keep list (should preview whole file deletion)
         with self.assertRaises(ValueError):
             Cookie.delete_cookies(path, set(), really_delete=False)
 
@@ -504,7 +504,7 @@ class CookieTestCase(common.BleachbitTestCase):
         # Create empty Chrome database
         path = self._create_chrome_cookies_db([])
 
-        # Test deletion with allowlist
+        # Test deletion with keep list
         result = Cookie.delete_cookies(
             path, {'example.com'}, really_delete=True)
 

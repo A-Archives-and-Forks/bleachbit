@@ -1,10 +1,9 @@
-# requirements for BleachBit on Windows
+# General dependencies
+-r ../requirements.txt
+# Windows specific dependencies
 certifi
-chardet
 plyer
-psutil
 py2exe
 pypiwin32
-requests
 winshell
-setuptools
+# python-gtk3-install.ps1 has special installation method for PyGObject.
