@@ -151,7 +151,7 @@ class Bleachbit(Gtk.Application):
         clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
         clipboard.request_targets(self.cb_clipboard_uri_received)
 
-    def cb_clipboard_uri_received(self, clipboard, targets, data):
+    def cb_clipboard_uri_received(self, clipboard, targets, _data):
         """Callback for when URIs are received from clipboard
 
         With GTK 3.18.9 on Windows, there was no text/uri-list in targets,
@@ -170,8 +170,11 @@ class Bleachbit(Gtk.Application):
             shred_uris = clipboard.wait_for_contents(
                 Gdk.atom_intern_static_string('text/uri-list')).get_uris()
             shred_paths = FileUtilities.uris_to_paths(shred_uris)
-        else:
-            logger.warning(not_found_msg)
+        elif Gdk.atom_intern_static_string('text/plain') in targets:
+            # Plain text pasted from a text editor
+            text = clipboard.wait_for_text()
+            if text:
+                shred_paths = [p.strip() for p in text.splitlines() if p.strip()]
         if shred_paths:
             GUI.shred_paths(self._window, shred_paths)
         else:
